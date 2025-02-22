@@ -6,6 +6,20 @@
 #include "GameFramework/Actor.h"
 #include "BaseWeapon.generated.h"
 
+USTRUCT(BlueprintType)
+struct FWeaponStats
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WeaponStats")
+	int _magSize;
+
+	
+
+	
+		
+};
+
 UCLASS()
 class GROUP_13_API ABaseWeapon : public AActor
 {
@@ -17,6 +31,10 @@ public:
 
 protected:
 	// Called when the game starts or when spawned
+	
+	
+
+	
 	virtual void BeginPlay() override;
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 
