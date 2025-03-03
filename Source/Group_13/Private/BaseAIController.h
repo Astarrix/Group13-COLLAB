@@ -3,23 +3,20 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
-#include "test.generated.h"
+#include "AIController.h"
+#include "BaseAIController.generated.h"
 
 UCLASS()
-class GROUP_13_API Atest : public AActor
+class GROUP_13_API ABaseAIController : public AAIController
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	Atest();
+	ABaseAIController();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	virtual void OnPossess(APawn* InPawn) override;
 };
