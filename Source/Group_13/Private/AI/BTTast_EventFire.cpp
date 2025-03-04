@@ -33,7 +33,7 @@ EBTNodeResult::Type UBTTast_EventFire::ExecuteTask(UBehaviorTreeComponent& Owner
 	UObject* pawn = BBComp->GetValueAsObject(Key_Pawn.SelectedKeyName);
 	if(UKismetSystemLibrary::DoesImplementInterface(pawn, UPawnable::StaticClass()))
 	{
-		//IPawnable
+		
 	}
 	
 	return Super::ExecuteTask(OwnerComp, NodeMemory);

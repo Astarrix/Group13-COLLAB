@@ -22,4 +22,7 @@ class GROUP_13_API IPawnable
 public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	UBehaviorTree* GetBehaviourTree();
+
+	//UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	
 };
