@@ -30,7 +30,7 @@ ABaseAIController::ABaseAIController()
 
 ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Other) const
 {
-	FGenericTeamId TeamID(FGenericTeamId::GetTeamIdentifier(&Other));
+	/*FGenericTeamId TeamID(FGenericTeamId::GetTeamIdentifier(&Other));
 	if(TeamID == FGenericTeamId(1))
 	{
 		return ETeamAttitude::Friendly;
@@ -38,7 +38,7 @@ ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Othe
 	if(TeamID == FGenericTeamId(2))
 	{
 		return ETeamAttitude::Hostile;
-	}
+	}*/
 	return ETeamAttitude::Neutral;
 }
 
