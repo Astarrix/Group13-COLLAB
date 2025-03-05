@@ -15,6 +15,4 @@ public:
 	static int LeftBitShift(int data, int pos);
 	UFUNCTION(BlueprintCallable)
 	static int RightBitShift(int data, int pos);
-	
-	
 };
