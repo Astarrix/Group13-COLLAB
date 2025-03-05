@@ -5,14 +5,39 @@
 
 #include "Pawnable.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Perception/AIPerceptionComponent.h"
+#include "Perception/AISenseConfig_Sight.h"
 
 
 // Sets default values
 ABaseAIController::ABaseAIController()
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	// _AIPerception = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("Perception"));
+	// _AISense_Sight->DetectionByAffiliation.bDetectEnemies = true;
+	// _AISense_Sight->DetectionByAffiliation.bDetectFriendlies = false;
+	// _AISense_Sight->DetectionByAffiliation.bDetectNeutrals = false;
+	//
+	// _AIPerception->ConfigureSense(*_AISense_Sight);
+	// _AIPerception->SetDominantSense(UAISenseConfig_Sight::StaticClass());
+	//
+	// ABaseAIController::SetGenericTeamId(FGenericTeamId(1));
 }
+
+// ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Other) const
+// {
+// 	FGenericTeamId TeamID(FGenericTeamId::GetTeamIdentifier(&Other));
+// 	if(TeamID == FGenericTeamId(1))
+// 	{
+// 		return ETeamAttitude::Friendly;
+// 	}
+// 	if(TeamID == FGenericTeamId(2))
+// 	{
+// 		return ETeamAttitude::Hostile;
+// 	}
+// 	return ETeamAttitude::Neutral;
+// }
 
 // Called when the game starts or when spawned
 void ABaseAIController::BeginPlay()

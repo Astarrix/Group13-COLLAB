@@ -3,6 +3,8 @@
 
 #include "BTService_GetDistanceToTargetActor.h"
 
+#include "BehaviorTree/BlackboardComponent.h"
+
 UBTService_GetDistanceToTargetActor::UBTService_GetDistanceToTargetActor()
 {
 	bNotifyTick = true;
@@ -29,7 +31,10 @@ void UBTService_GetDistanceToTargetActor::InitializeFromAsset(UBehaviorTree& Ass
 
 void UBTService_GetDistanceToTargetActor::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
 {
-	
+	UBlackboardComponent* BBComp = OwnerComp.GetBlackboardComponent();
+	float dist = (Cast<AActor>(BBComp->GetValueAsObject(Key_Pawn.SelectedKeyName))->GetActorLocation()   //TODO: would like to find a way to avoid these casts
+	- Cast<AActor>(BBComp->GetValueAsObject(Key_TargetActor.SelectedKeyName))->GetActorLocation()).Length();
+	BBComp->SetValueAsFloat(Key_Distance.SelectedKeyName, dist);
 
 	Super::TickNode(OwnerComp, NodeMemory, DeltaSeconds);
 }
