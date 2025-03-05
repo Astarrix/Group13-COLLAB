@@ -33,13 +33,19 @@ EBTNodeResult::Type UBTTast_EventFire::ExecuteTask(UBehaviorTreeComponent& Owner
 	UObject* pawn = BBComp->GetValueAsObject(Key_Pawn.SelectedKeyName);
 	if(UKismetSystemLibrary::DoesImplementInterface(pawn, UPawnable::StaticClass()))
 	{
-		
-	}
-	
-	return Super::ExecuteTask(OwnerComp, NodeMemory);
+		IPawnable::Execute_Action_Started(pawn);
+		return EBTNodeResult::InProgress;
+	}	
+	return EBTNodeResult::Failed;
 }
 
 EBTNodeResult::Type UBTTast_EventFire::AbortTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
+	const UBlackboardComponent* BBComp = OwnerComp.GetBlackboardComponent();
+	UObject* pawn = BBComp->GetValueAsObject(Key_Pawn.SelectedKeyName);
+	if(UKismetSystemLibrary::DoesImplementInterface(pawn, UPawnable::StaticClass()))
+	{
+		IPawnable::Execute_Action_Cancelled(pawn);
+	}	
 	return Super::AbortTask(OwnerComp, NodeMemory);
 }

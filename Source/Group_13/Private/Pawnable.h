@@ -23,6 +23,9 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	UBehaviorTree* GetBehaviourTree();
 
-	//UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	
+	//used in ai
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void Action_Started();
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void Action_Cancelled();
 };
