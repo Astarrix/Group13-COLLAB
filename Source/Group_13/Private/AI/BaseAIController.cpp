@@ -4,7 +4,6 @@
 #include "BaseAIController.h"
 
 #include "Pawnable.h"
-#include "BehaviorTree/BlackboardComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
@@ -30,15 +29,15 @@ ABaseAIController::ABaseAIController()
 
 ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Other) const
 {
-	/*FGenericTeamId TeamID(FGenericTeamId::GetTeamIdentifier(&Other));
-	if(TeamID == FGenericTeamId(1))
+	FGenericTeamId TeamId(FGenericTeamId::GetTeamIdentifier(&Other));
+	if(TeamId == FGenericTeamId(1))
 	{
 		return ETeamAttitude::Friendly;
 	}
-	if(TeamID == FGenericTeamId(2))
+	if(TeamId == FGenericTeamId(2))
 	{
 		return ETeamAttitude::Hostile;
-	}*/
+	}
 	return ETeamAttitude::Neutral;
 }
 

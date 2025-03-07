@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "EnvironmentQuery/EnvQueryManager.h"
 //#include "AIController.h"
 #include "Runtime/AIModule/Classes/AIController.h"
 #include "BaseAIController.generated.h"
