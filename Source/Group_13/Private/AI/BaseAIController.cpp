@@ -4,6 +4,8 @@
 #include "BaseAIController.h"
 
 #include "Pawnable.h"
+#include "BehaviorTree/BlackboardComponent.h"
+#include "EnvironmentQuery/EnvQueryTypes.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
@@ -44,7 +46,8 @@ ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Othe
 // Called when the game starts or when spawned
 void ABaseAIController::BeginPlay()
 {
-	Super::BeginPlay();	
+	Super::BeginPlay();
+	_AIPerception->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &ABaseAIController::Handle_TargetPerceptionUpdated);
 }
 
 void ABaseAIController::OnPossess(APawn* InPawn)
@@ -56,4 +59,35 @@ void ABaseAIController::OnPossess(APawn* InPawn)
 		RunBehaviorTree(IPawnable::Execute_GetBehaviourTree(InPawn));
 	}
 }
+
+void ABaseAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
+{
+	switch (Stimulus.Type)
+	{
+	case 0:
+		//react
+			if(Stimulus.WasSuccessfullySensed())
+			{
+				GetBlackboardComponent()->SetValueAsObject("Target", Actor);
+			}
+			else
+			{
+				GetBlackboardComponent()->ClearValue("Target");
+			}		
+		return;
+	default:
+		return;
+	}
+}
+
+void ABaseAIController::Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult> Result)
+{
+	if(Result->IsSuccessful())
+	{
+		GetBlackboardComponent()->SetValueAsVector("TargetLocation", Result->GetItemAsLocation(0));
+		UE_LOG(LogTemp,Display,TEXT("wandering"));
+	}
+}
+
+
 
