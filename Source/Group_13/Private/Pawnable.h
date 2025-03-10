@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BehaviorTree/BehaviorTree.h"
+//#include "BehaviorTree/BehaviorTree.h"
 #include "UObject/Interface.h"
 #include "Pawnable.generated.h"
 

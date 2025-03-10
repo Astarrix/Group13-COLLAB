@@ -51,12 +51,15 @@ ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Othe
 void ABaseAIController::BeginPlay()
 {
 	Super::BeginPlay();
+	UE_LOG(LogTemp,Display, TEXT("begin play"));
 	_AIPerception->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &ABaseAIController::Handle_TargetPerceptionUpdated);
 }
 
 void ABaseAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
+
+	UE_LOG(LogTemp,Display, TEXT("in pawn"));
 
 	if(UKismetSystemLibrary::DoesImplementInterface(InPawn, UPawnable::StaticClass()))
 	{
@@ -89,7 +92,7 @@ void ABaseAIController::Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult
 {
 	if(Result->IsSuccessful())
 	{
-		GetBlackboardComponent()->SetValueAsVector("TargetLocation", Result->GetItemAsLocation(0));
+		GetBlackboardComponent()->SetValueAsVector("newPos", Result->GetItemAsLocation(0));
 		UE_LOG(LogTemp,Display,TEXT("wandering"));
 	}
 }

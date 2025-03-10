@@ -39,5 +39,6 @@ protected:
 private:
 	UFUNCTION()
 	void Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus);
+
 	void Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult> Result);
 };

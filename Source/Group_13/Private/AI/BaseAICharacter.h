@@ -9,8 +9,9 @@
 #include "BaseAICharacter.generated.h"
 
 
+class UBehaviorTree;
 
-UCLASS()
+UCLASS(Abstract)
 class GROUP_13_API ABaseAICharacter : public ACharacter, public IPawnable, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
@@ -18,6 +19,11 @@ class GROUP_13_API ABaseAICharacter : public ACharacter, public IPawnable, publi
 public:
 	// Sets default values for this character's properties
 	ABaseAICharacter();
+
+	virtual void Action_Started_Implementation() override;
+	virtual void Action_Cancelled_Implementation() override;
+
+	virtual void BeginPlay() override;
 
 protected:
 
@@ -35,6 +41,6 @@ protected:
 	
 	virtual UBehaviorTree* GetBehaviourTree_Implementation() override; 
 	
-	virtual void BeginPlay() override;
+
 
 };
