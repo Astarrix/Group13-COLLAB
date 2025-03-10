@@ -32,7 +32,7 @@ protected:
 	TObjectPtr<USceneComponent> _Root;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<USkeletalMeshComponent> _Mesh;
+	TObjectPtr<UStaticMeshComponent> _Mesh;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UArrowComponent> _Muzzle;

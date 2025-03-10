@@ -14,7 +14,7 @@ AWeaponBase::AWeaponBase()
 	_Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = _Root;
 
-	_Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
+	_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	_Mesh->SetupAttachment(RootComponent);
 
 	_Muzzle = CreateDefaultSubobject<UArrowComponent>(TEXT("Muzzle"));
