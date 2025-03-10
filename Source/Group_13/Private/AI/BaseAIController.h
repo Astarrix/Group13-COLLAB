@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 //#include "AIController.h"
+#include "EnvironmentQuery/EnvQueryManager.h"
 #include "Runtime/AIModule/Classes/AIController.h"
 #include "BaseAIController.generated.h"
 

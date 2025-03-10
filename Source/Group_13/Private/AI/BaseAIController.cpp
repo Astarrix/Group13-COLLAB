@@ -5,7 +5,8 @@
 
 #include "Pawnable.h"
 #include "BehaviorTree/BlackboardComponent.h"
-#include "EnvironmentQuery/EnvQueryTypes.h"
+//#include "EnvironmentQuery/EnvQueryManager.h"
+//#include "EnvironmentQuery/EnvQueryTypes.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
@@ -27,6 +28,9 @@ ABaseAIController::ABaseAIController()
 	_AIPerception->SetDominantSense(UAISenseConfig_Sight::StaticClass());
 	
 	AAIController::SetGenericTeamId(FGenericTeamId(1));
+
+	FEnvQueryRequest EQR_FindWanderTargetRequest = FEnvQueryRequest(_EQS_FindWanderTarget,GetPawn());
+	EQR_FindWanderTargetRequest.Execute(EEnvQueryRunMode::RandomBest25Pct,this, &ABaseAIController::Handle_FindWanderTargetResult);
 }
 
 ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Other) const
@@ -57,6 +61,7 @@ void ABaseAIController::OnPossess(APawn* InPawn)
 	if(UKismetSystemLibrary::DoesImplementInterface(InPawn, UPawnable::StaticClass()))
 	{
 		RunBehaviorTree(IPawnable::Execute_GetBehaviourTree(InPawn));
+		UE_LOG(LogTemp, Display, TEXT("RunBehaviorTree and in pawn"));
 	}
 }
 
