@@ -13,15 +13,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP_WeaponProjectile.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_CameraShakeManager.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_CameraShakeManager.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Projectile.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_ProjectileWeapon.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_BaseWeapon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_BaseWeapon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +25,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/Projectile.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/Projectile.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/Weapon_Projectile.cpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="Toolset" />
@@ -52,7 +46,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "MechProto",
+    "git-widget-placeholder": "main-DNU",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -525,6 +519,7 @@
       <workItem from="1741602083512" duration="27000" />
       <workItem from="1741602152174" duration="145000" />
       <workItem from="1741602470252" duration="1431000" />
+      <workItem from="1741608796161" duration="301000" />
     </task>
     <servers />
   </component>
