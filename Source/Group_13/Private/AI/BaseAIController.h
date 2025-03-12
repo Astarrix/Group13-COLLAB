@@ -22,7 +22,7 @@ class GROUP_13_API ABaseAIController : public AAIController
 public:
 	// Sets default values for this actor's properties
 	ABaseAIController();
-
+	
 	virtual ETeamAttitude::Type GetTeamAttitudeTowards(const AActor& Other) const override;
 
 protected:
@@ -38,7 +38,11 @@ protected:
 
 private:
 	UFUNCTION()
-	void Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus);
+	void Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus);
 
-	void Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult> Result);
+	void Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult> result);
+
+	//UBlackboardComponent* _Blackboard;
+	//UBehaviorTreeComponent* _BehaviourTree;
+	
 };

@@ -1,22 +1,22 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "BTTast_EventFire.h"
+#include "BTTask_EventFire.h"
 
 #include "Pawnable.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 
-UBTTast_EventFire::UBTTast_EventFire()
+UBTTask_EventFire::UBTTask_EventFire()
 {
 	bNotifyTick = true;
 	bNotifyTaskFinished = true;
 	bCreateNodeInstance = false;
 
-	Key_Pawn.AddObjectFilter(this, GET_MEMBER_NAME_CHECKED(UBTTast_EventFire,Key_Pawn), APawn::StaticClass());
+	Key_Pawn.AddObjectFilter(this, GET_MEMBER_NAME_CHECKED(UBTTask_EventFire,Key_Pawn), APawn::StaticClass());
 }
 
-void UBTTast_EventFire::InitializeFromAsset(UBehaviorTree& Asset)
+void UBTTask_EventFire::InitializeFromAsset(UBehaviorTree& Asset)
 {
 	Super::InitializeFromAsset(Asset);
 
@@ -27,7 +27,7 @@ void UBTTast_EventFire::InitializeFromAsset(UBehaviorTree& Asset)
 	}
 }
 
-EBTNodeResult::Type UBTTast_EventFire::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+EBTNodeResult::Type UBTTask_EventFire::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	const UBlackboardComponent* BBComp = OwnerComp.GetBlackboardComponent();
 	UObject* pawn = BBComp->GetValueAsObject(Key_Pawn.SelectedKeyName);
@@ -39,7 +39,7 @@ EBTNodeResult::Type UBTTast_EventFire::ExecuteTask(UBehaviorTreeComponent& Owner
 	return EBTNodeResult::Failed;
 }
 
-EBTNodeResult::Type UBTTast_EventFire::AbortTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+EBTNodeResult::Type UBTTask_EventFire::AbortTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	const UBlackboardComponent* BBComp = OwnerComp.GetBlackboardComponent();
 	UObject* pawn = BBComp->GetValueAsObject(Key_Pawn.SelectedKeyName);

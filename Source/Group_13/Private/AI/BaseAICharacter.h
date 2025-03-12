@@ -23,6 +23,8 @@ public:
 	virtual void Action_Started_Implementation() override;
 	virtual void Action_Cancelled_Implementation() override;
 
+	virtual UBehaviorTree* GetBehaviourTree_Implementation() override; 
+
 	virtual void BeginPlay() override;
 
 protected:
@@ -39,7 +41,7 @@ protected:
 	
 	virtual FGenericTeamId GetGenericTeamId() const override; //sets the team id so its not recognised as an enemy by other ai
 	
-	virtual UBehaviorTree* GetBehaviourTree_Implementation() override; 
+
 	
 
 

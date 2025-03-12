@@ -4,15 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "BTTast_EventFire.generated.h"
+#include "BTTask_EventFire.generated.h"
 
 UCLASS()
-class GROUP_13_API UBTTast_EventFire : public UBTTaskNode
+class GROUP_13_API UBTTask_EventFire : public UBTTaskNode
 {
 	GENERATED_BODY()
 
 public:
-	UBTTast_EventFire();
+	UBTTask_EventFire();
 
 	virtual void InitializeFromAsset(UBehaviorTree& Asset) override;
 

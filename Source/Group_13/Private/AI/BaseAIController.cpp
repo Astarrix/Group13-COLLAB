@@ -7,6 +7,7 @@
 #include "BehaviorTree/BlackboardComponent.h"
 //#include "EnvironmentQuery/EnvQueryManager.h"
 //#include "EnvironmentQuery/EnvQueryTypes.h"
+#include "BehaviorTree/BehaviorTreeComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Sight.h"
@@ -15,7 +16,10 @@
 // Sets default values
 ABaseAIController::ABaseAIController()
 {
-	//PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = true;
+
+	//_BehaviourTree = CreateDefaultSubobject<UBehaviorTreeComponent>(TEXT("BehaviourTree"));
+	//_Blackboard = CreateDefaultSubobject<UBlackboardComponent>(TEXT("Blackboard"));
 
 	_AIPerception = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("Perception"));
 	_AISense_Sight= CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("SenseSight"));
@@ -65,16 +69,21 @@ void ABaseAIController::OnPossess(APawn* InPawn)
 	{
 		RunBehaviorTree(IPawnable::Execute_GetBehaviourTree(InPawn));
 		UE_LOG(LogTemp, Display, TEXT("RunBehaviorTree and in pawn"));
+		
+		//if(RunBehaviorTree(IPawnable::Execute_GetBehaviourTree(InPawn)))
+		//{
+			//UE_LOG(LogTemp, Display, TEXT("RunBehaviorTree and in pawn"));
+		//}
 	}
 }
 
-void ABaseAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
+void ABaseAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus)
 {
-	switch (Stimulus.Type)
+	switch (stimulus.Type)
 	{
 	case 0:
 		//react
-			if(Stimulus.WasSuccessfullySensed())
+			if(stimulus.WasSuccessfullySensed())
 			{
 				GetBlackboardComponent()->SetValueAsObject("Target", Actor);
 			}
@@ -88,11 +97,12 @@ void ABaseAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulu
 	}
 }
 
-void ABaseAIController::Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult> Result)
+void ABaseAIController::Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult> result)
 {
-	if(Result->IsSuccessful())
+	if(result->IsSuccessful())
 	{
-		GetBlackboardComponent()->SetValueAsVector("newPos", Result->GetItemAsLocation(0));
+		//GetBlackboardComponent()->ClearValue("newPos");
+		GetBlackboardComponent()->SetValueAsVector("newPos", result->GetItemAsLocation(0));
 		UE_LOG(LogTemp,Display,TEXT("wandering"));
 	}
 }
