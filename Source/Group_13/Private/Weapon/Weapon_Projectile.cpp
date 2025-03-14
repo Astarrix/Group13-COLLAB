@@ -1,4 +1,5 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
+﻿
+// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "Weapon_Projectile.h"
@@ -17,8 +18,6 @@ void AWeapon_Projectile::Fire()
 	spawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 
 	world->SpawnActor(_ProjectileClass, &_Muzzle->GetComponentTransform(), spawnParams);
-	
-
 	
 	Super::Fire();
 }
