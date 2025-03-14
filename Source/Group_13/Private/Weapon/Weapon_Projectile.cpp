@@ -19,8 +19,6 @@ void AWeapon_Projectile::Fire()
 
 	world->SpawnActor(_ProjectileClass, &_Muzzle->GetComponentTransform(), spawnParams);
 	
-
-	
 	Super::Fire();
 }
 
