@@ -12,17 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP_Weapon_Projectile.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_Weapon_Projectile.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/BP_BasePickup.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/BP_BasePickup.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_BaseWeapon.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_WeaponPickup.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_WeaponPickup.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/Weapon_Projectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/Weapon_Projectile.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -545,7 +535,7 @@
       <workItem from="1741608796161" duration="301000" />
       <workItem from="1741966927141" duration="2085000" />
       <workItem from="1741975986763" duration="83000" />
-      <workItem from="1741979817062" duration="34000" />
+      <workItem from="1741979817564" duration="631000" />
     </task>
     <servers />
   </component>
