@@ -9,6 +9,7 @@
 #include "BaseAICharacter.generated.h"
 
 
+class UHealthComponent;
 class USphereComponent;
 class UBehaviorTree;
 
@@ -38,6 +39,9 @@ protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
 	TObjectPtr<USphereComponent> _SphereCollider;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<UHealthComponent> _Health;
+
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	TObjectPtr<UBehaviorTree> _BehaviourTree;
 
@@ -47,4 +51,9 @@ protected:
 
 	UFUNCTION()
 	void NotifyActorBeginOverlap(AActor* OtherActor) override;
+
+	UFUNCTION()
+	void Handle_HealthDead(AController* causer);
+	UFUNCTION()
+	void Handle_HealthDamaged(float current, float max, float change);
 };

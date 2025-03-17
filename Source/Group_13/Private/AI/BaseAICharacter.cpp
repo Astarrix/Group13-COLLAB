@@ -37,6 +37,15 @@ void ABaseAICharacter::NotifyActorBeginOverlap(AActor* OtherActor)
 	Super::NotifyActorBeginOverlap(OtherActor);
 }
 
+void ABaseAICharacter::Handle_HealthDead(AController* causer)
+{
+	GetOwner()->Destroy();
+}
+
+void ABaseAICharacter::Handle_HealthDamaged(float current, float max, float change)
+{
+}
+
 UBehaviorTree* ABaseAICharacter::GetBehaviourTree_Implementation()
 {
 	return _BehaviourTree;
