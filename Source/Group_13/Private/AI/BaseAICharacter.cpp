@@ -4,12 +4,15 @@
 #include "BaseAICharacter.h"
 
 #include "Components/SphereComponent.h"
+#include "HealthComp/HealthComponent.h"
 
 
 // Sets default values
 ABaseAICharacter::ABaseAICharacter()
 {
-	_SphereCollider = CreateDefaultSubobject<USphereComponent>(TEXT("Sphere Collider"));	
+	_SphereCollider = CreateDefaultSubobject<USphereComponent>(TEXT("Sphere Collider"));
+
+	_Health = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
 }
 
 void ABaseAICharacter::Action_Started_Implementation()
@@ -39,11 +42,13 @@ void ABaseAICharacter::NotifyActorBeginOverlap(AActor* OtherActor)
 
 void ABaseAICharacter::Handle_HealthDead(AController* causer)
 {
-	GetOwner()->Destroy();
+	UE_LOG(LogTemp,Display,TEXT("dead"));
+	Destroy();
 }
 
 void ABaseAICharacter::Handle_HealthDamaged(float current, float max, float change)
 {
+	UE_LOG(LogTemp,Display,TEXT("dmg"));
 }
 
 UBehaviorTree* ABaseAICharacter::GetBehaviourTree_Implementation()
@@ -54,6 +59,8 @@ UBehaviorTree* ABaseAICharacter::GetBehaviourTree_Implementation()
 void ABaseAICharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	_Health->OnDamaged.AddUniqueDynamic(this, &ABaseAICharacter::Handle_HealthDamaged);
+	_Health->OnDead.AddUniqueDynamic(this, &ABaseAICharacter::Handle_HealthDead);
 }
 

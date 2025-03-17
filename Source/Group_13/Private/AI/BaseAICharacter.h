@@ -54,6 +54,6 @@ protected:
 
 	UFUNCTION()
 	void Handle_HealthDead(AController* causer);
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void Handle_HealthDamaged(float current, float max, float change);
 };
