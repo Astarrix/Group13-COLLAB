@@ -42,12 +42,16 @@ ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Othe
 	FGenericTeamId TeamId(FGenericTeamId::GetTeamIdentifier(&Other));
 	if(TeamId == FGenericTeamId(1))
 	{
-		return ETeamAttitude::Friendly;
+		UE_LOG(LogTemp,Display, TEXT("Found a unfriendly actor"  ));
+		chaseOther = true;
+		return ETeamAttitude::Hostile;
 	}
 	if(TeamId == FGenericTeamId(2))
 	{
-		return ETeamAttitude::Hostile;
+		chaseOther = false;
+		return ETeamAttitude::Friendly;
 	}
+	chaseOther = true;
 	return ETeamAttitude::Neutral;
 }
 
@@ -55,7 +59,6 @@ ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Othe
 void ABaseAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp,Display, TEXT("begin play"));
 	_AIPerception->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &ABaseAIController::Handle_TargetPerceptionUpdated);
 }
 
@@ -68,12 +71,7 @@ void ABaseAIController::OnPossess(APawn* InPawn)
 	if(UKismetSystemLibrary::DoesImplementInterface(InPawn, UPawnable::StaticClass()))
 	{
 		RunBehaviorTree(IPawnable::Execute_GetBehaviourTree(InPawn));
-		UE_LOG(LogTemp, Display, TEXT("RunBehaviorTree and in pawn"));
-		
-		//if(RunBehaviorTree(IPawnable::Execute_GetBehaviourTree(InPawn)))
-		//{
-			//UE_LOG(LogTemp, Display, TEXT("RunBehaviorTree and in pawn"));
-		//}
+		UE_LOG(LogTemp, Display, TEXT("RunBehaviorTree and in pawn"));		
 	}
 }
 
@@ -83,8 +81,8 @@ void ABaseAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulu
 	{
 	case 0:
 		//react
-			if(stimulus.WasSuccessfullySensed())
-			{
+			if(stimulus.WasSuccessfullySensed() && chaseOther)
+			{				
 				GetBlackboardComponent()->SetValueAsObject("Target", Actor);
 			}
 			else

@@ -9,6 +9,7 @@
 #include "BaseAICharacter.generated.h"
 
 
+class USphereComponent;
 class UBehaviorTree;
 
 UCLASS(Abstract)
@@ -17,7 +18,7 @@ class GROUP_13_API ABaseAICharacter : public ACharacter, public IPawnable, publi
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
+	
 	ABaseAICharacter();
 
 	virtual void Action_Started_Implementation() override;
@@ -34,15 +35,16 @@ protected:
 	UPROPERTY(EditAnywhere)
 	FGenericTeamId _TeamId;
 
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
+	TObjectPtr<USphereComponent> _SphereCollider;
+
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	TObjectPtr<UBehaviorTree> _BehaviourTree;
 
 #pragma endregion 
 	
 	virtual FGenericTeamId GetGenericTeamId() const override; //sets the team id so its not recognised as an enemy by other ai
-	
 
-	
-
-
+	UFUNCTION()
+	void NotifyActorBeginOverlap(AActor* OtherActor) override;
 };

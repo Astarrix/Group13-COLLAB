@@ -25,6 +25,9 @@ public:
 	
 	virtual ETeamAttitude::Type GetTeamAttitudeTowards(const AActor& Other) const override;
 
+	//UPROPERTY()
+	mutable bool chaseOther = false;
+
 protected:
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UEnvQuery> _EQS_FindWanderTarget;
@@ -37,6 +40,8 @@ protected:
 	virtual void OnPossess(APawn* InPawn) override;
 
 private:
+	
+	
 	UFUNCTION()
 	void Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus);
 
