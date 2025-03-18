@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "BaseAIController.h"
+#include "FloorAIController.h"
 
 #include "Pawnable.h"
 #include "BehaviorTree/BlackboardComponent.h"
@@ -14,7 +14,7 @@
 
 
 // Sets default values
-ABaseAIController::ABaseAIController()
+AFloorAIController::AFloorAIController()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -34,10 +34,10 @@ ABaseAIController::ABaseAIController()
 	AAIController::SetGenericTeamId(FGenericTeamId(2));
 
 	FEnvQueryRequest EQR_FindWanderTargetRequest = FEnvQueryRequest(_EQS_FindWanderTarget,GetPawn());
-	EQR_FindWanderTargetRequest.Execute(EEnvQueryRunMode::RandomBest25Pct,this, &ABaseAIController::Handle_FindWanderTargetResult);
+	EQR_FindWanderTargetRequest.Execute(EEnvQueryRunMode::RandomBest25Pct,this, &AFloorAIController::Handle_FindWanderTargetResult);
 }
 
-ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Other) const
+ETeamAttitude::Type AFloorAIController::GetTeamAttitudeTowards(const AActor& Other) const
 {
 	FGenericTeamId TeamId(FGenericTeamId::GetTeamIdentifier(&Other));
 	if(TeamId == FGenericTeamId(1))
@@ -56,13 +56,13 @@ ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Othe
 }
 
 // Called when the game starts or when spawned
-void ABaseAIController::BeginPlay()
+void AFloorAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	_AIPerception->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &ABaseAIController::Handle_TargetPerceptionUpdated);
+	_AIPerception->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &AFloorAIController::Handle_TargetPerceptionUpdated);
 }
 
-void ABaseAIController::OnPossess(APawn* InPawn)
+void AFloorAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 
@@ -75,7 +75,7 @@ void ABaseAIController::OnPossess(APawn* InPawn)
 	}
 }
 
-void ABaseAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus)
+void AFloorAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus)
 {
 	switch (stimulus.Type)
 	{
@@ -95,7 +95,7 @@ void ABaseAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulu
 	}
 }
 
-void ABaseAIController::Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult> result)
+void AFloorAIController::Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult> result)
 {
 	if(result->IsSuccessful())
 	{

@@ -6,7 +6,7 @@
 #include "GenericTeamAgentInterface.h"
 #include "Pawnable.h"
 #include "GameFramework/Character.h"
-#include "BaseAICharacter.generated.h"
+#include "FloorAICharacter.generated.h"
 
 
 class UHealthComponent;
@@ -14,13 +14,13 @@ class USphereComponent;
 class UBehaviorTree;
 
 UCLASS(Abstract)
-class GROUP_13_API ABaseAICharacter : public ACharacter, public IPawnable, public IGenericTeamAgentInterface
+class GROUP_13_API AFloorAICharacter : public ACharacter, public IPawnable, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
 
 public:
 	
-	ABaseAICharacter();
+	AFloorAICharacter();
 
 	virtual void Action_Started_Implementation() override;
 	virtual void Action_Cancelled_Implementation() override;
