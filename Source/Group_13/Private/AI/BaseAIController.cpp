@@ -31,7 +31,7 @@ ABaseAIController::ABaseAIController()
 	_AIPerception->ConfigureSense(*_AISense_Sight);
 	_AIPerception->SetDominantSense(UAISenseConfig_Sight::StaticClass());
 	
-	AAIController::SetGenericTeamId(FGenericTeamId(1));
+	AAIController::SetGenericTeamId(FGenericTeamId(2));
 
 	FEnvQueryRequest EQR_FindWanderTargetRequest = FEnvQueryRequest(_EQS_FindWanderTarget,GetPawn());
 	EQR_FindWanderTargetRequest.Execute(EEnvQueryRunMode::RandomBest25Pct,this, &ABaseAIController::Handle_FindWanderTargetResult);
