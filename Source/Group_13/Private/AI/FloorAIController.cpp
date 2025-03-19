@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "BaseAIController.h"
+#include "FloorAIController.h"
 
 #include "Pawnable.h"
 #include "BehaviorTree/BlackboardComponent.h"
@@ -14,7 +14,7 @@
 
 
 // Sets default values
-ABaseAIController::ABaseAIController()
+AFloorAIController::AFloorAIController()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -31,35 +31,38 @@ ABaseAIController::ABaseAIController()
 	_AIPerception->ConfigureSense(*_AISense_Sight);
 	_AIPerception->SetDominantSense(UAISenseConfig_Sight::StaticClass());
 	
-	AAIController::SetGenericTeamId(FGenericTeamId(1));
+	AAIController::SetGenericTeamId(FGenericTeamId(2));
 
 	FEnvQueryRequest EQR_FindWanderTargetRequest = FEnvQueryRequest(_EQS_FindWanderTarget,GetPawn());
-	EQR_FindWanderTargetRequest.Execute(EEnvQueryRunMode::RandomBest25Pct,this, &ABaseAIController::Handle_FindWanderTargetResult);
+	EQR_FindWanderTargetRequest.Execute(EEnvQueryRunMode::RandomBest25Pct,this, &AFloorAIController::Handle_FindWanderTargetResult);
 }
 
-ETeamAttitude::Type ABaseAIController::GetTeamAttitudeTowards(const AActor& Other) const
+ETeamAttitude::Type AFloorAIController::GetTeamAttitudeTowards(const AActor& Other) const
 {
 	FGenericTeamId TeamId(FGenericTeamId::GetTeamIdentifier(&Other));
 	if(TeamId == FGenericTeamId(1))
 	{
-		return ETeamAttitude::Friendly;
+		UE_LOG(LogTemp,Display, TEXT("Found a unfriendly actor"  ));
+		chaseOther = true;
+		return ETeamAttitude::Hostile;
 	}
 	if(TeamId == FGenericTeamId(2))
 	{
-		return ETeamAttitude::Hostile;
+		chaseOther = false;
+		return ETeamAttitude::Friendly;
 	}
+	chaseOther = true;
 	return ETeamAttitude::Neutral;
 }
 
 // Called when the game starts or when spawned
-void ABaseAIController::BeginPlay()
+void AFloorAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp,Display, TEXT("begin play"));
-	_AIPerception->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &ABaseAIController::Handle_TargetPerceptionUpdated);
+	_AIPerception->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &AFloorAIController::Handle_TargetPerceptionUpdated);
 }
 
-void ABaseAIController::OnPossess(APawn* InPawn)
+void AFloorAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 
@@ -68,23 +71,18 @@ void ABaseAIController::OnPossess(APawn* InPawn)
 	if(UKismetSystemLibrary::DoesImplementInterface(InPawn, UPawnable::StaticClass()))
 	{
 		RunBehaviorTree(IPawnable::Execute_GetBehaviourTree(InPawn));
-		UE_LOG(LogTemp, Display, TEXT("RunBehaviorTree and in pawn"));
-		
-		//if(RunBehaviorTree(IPawnable::Execute_GetBehaviourTree(InPawn)))
-		//{
-			//UE_LOG(LogTemp, Display, TEXT("RunBehaviorTree and in pawn"));
-		//}
+		UE_LOG(LogTemp, Display, TEXT("RunBehaviorTree and in pawn"));		
 	}
 }
 
-void ABaseAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus)
+void AFloorAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus)
 {
 	switch (stimulus.Type)
 	{
 	case 0:
 		//react
-			if(stimulus.WasSuccessfullySensed())
-			{
+			if(stimulus.WasSuccessfullySensed() && chaseOther)
+			{				
 				GetBlackboardComponent()->SetValueAsObject("Target", Actor);
 			}
 			else
@@ -97,7 +95,7 @@ void ABaseAIController::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulu
 	}
 }
 
-void ABaseAIController::Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult> result)
+void AFloorAIController::Handle_FindWanderTargetResult(TSharedPtr<FEnvQueryResult> result)
 {
 	if(result->IsSuccessful())
 	{

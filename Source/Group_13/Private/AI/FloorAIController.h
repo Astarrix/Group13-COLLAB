@@ -6,7 +6,7 @@
 //#include "AIController.h"
 #include "EnvironmentQuery/EnvQueryManager.h"
 #include "Runtime/AIModule/Classes/AIController.h"
-#include "BaseAIController.generated.h"
+#include "FloorAIController.generated.h"
 
 class UEnvQuery;
 struct FEnvQueryRequest;
@@ -15,15 +15,18 @@ struct FAIStimulus;
 class UAISenseConfig_Sight;
 
 UCLASS(Abstract)
-class GROUP_13_API ABaseAIController : public AAIController
+class GROUP_13_API AFloorAIController : public AAIController
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	ABaseAIController();
+	AFloorAIController();
 	
 	virtual ETeamAttitude::Type GetTeamAttitudeTowards(const AActor& Other) const override;
+
+	//UPROPERTY()
+	mutable bool chaseOther = false;
 
 protected:
 	UPROPERTY(EditAnywhere)
@@ -37,6 +40,8 @@ protected:
 	virtual void OnPossess(APawn* InPawn) override;
 
 private:
+	
+	
 	UFUNCTION()
 	void Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus);
 
