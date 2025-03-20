@@ -11,7 +11,7 @@ class GROUP_13_API UFunctionLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 public:
-	UFUNCTION(BlueprintCallable, BlueprintPure)
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta=(CompactNodeTitle = "<<"))
 	static int LeftBitShift(int data, int pos);
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	static int RightBitShift(int data, int pos);
