@@ -14,15 +14,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Materials/M_Window1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Materials/M_Window1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_CameraShakeManager.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_CameraShakeManager.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/A_Target.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/A_Target.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_Weapon_Projectile.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_Weapon_Projectile.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Tools/BP_FunctionLibrary.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Tools/BP_FunctionLibrary.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Group_13/Private/FunctionLibrary.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Group_13/Private/FunctionLibrary.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Group_13/Private/MyClass.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Group_13/Public/MyClass.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +61,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.EpicGames.AspNet">
+  <component name="RunManager" selected="C/C++ Project.Group_13">
     <configuration name="Group_13" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
         <option name="CONFIGURATION" value="Development Editor" />
@@ -552,6 +545,7 @@
       <workItem from="1742076573051" duration="262000" />
       <workItem from="1742155733224" duration="972000" />
       <workItem from="1742205777038" duration="1231000" />
+      <workItem from="1742490161911" duration="678000" />
     </task>
     <servers />
   </component>
@@ -561,16 +555,5 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/Group_13/Private/FunctionLibrary.cpp</url>
-          <line>16</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

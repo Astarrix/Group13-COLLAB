@@ -14,3 +14,13 @@ int UFunctionLibrary::RightBitShift(int data, int pos)
 	int shifted = (data >> pos);
 	return shifted;
 }
+
+void UFunctionLibrary::GetActorAxis(AActor* actor, FVector &Position, FVector& Forward, FVector& Right, FVector& Up)
+{
+	Position = actor->GetActorLocation();
+	Forward = actor->GetActorForwardVector();
+	Right = actor->GetActorRightVector();
+	Up = actor->GetActorUpVector();
+}
+
+
