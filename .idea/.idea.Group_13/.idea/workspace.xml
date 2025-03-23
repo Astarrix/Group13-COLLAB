@@ -13,9 +13,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Core/UIC_ModeSignifier.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Group_13/Private/MyClass.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Group_13/Public/MyClass.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_Character.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +35,9 @@
     <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/Weapon_Projectile.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Editor/BlueprintEditorLibrary/Public/BlueprintEditorLibrary.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Editor/Kismet/Private/BPDelegateDragDropAction.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/Kismet/KismetStringLibrary.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="Toolset" />
@@ -546,6 +551,9 @@
       <workItem from="1742155733224" duration="972000" />
       <workItem from="1742205777038" duration="1231000" />
       <workItem from="1742490161911" duration="678000" />
+      <workItem from="1742490949239" duration="635000" />
+      <workItem from="1742491695312" duration="562000" />
+      <workItem from="1742575139014" duration="2000" />
     </task>
     <servers />
   </component>
