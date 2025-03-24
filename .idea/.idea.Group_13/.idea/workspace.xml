@@ -12,11 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" afterDir="false" />
-    </list>
+    <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,6 +57,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "SolutionBuilderGeneralOptionsPage",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -551,6 +548,7 @@
       <workItem from="1742491695312" duration="562000" />
       <workItem from="1742575139014" duration="2000" />
       <workItem from="1742810969997" duration="1731000" />
+      <workItem from="1742813177877" duration="405000" />
     </task>
     <servers />
   </component>
