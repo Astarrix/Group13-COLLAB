@@ -57,7 +57,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "SolutionBuilderGeneralOptionsPage",
+    "settings.editor.selected.configurable": "CppClangTidyOptionsId",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -548,7 +548,7 @@
       <workItem from="1742491695312" duration="562000" />
       <workItem from="1742575139014" duration="2000" />
       <workItem from="1742810969997" duration="1731000" />
-      <workItem from="1742813177877" duration="405000" />
+      <workItem from="1742813177877" duration="2355000" />
     </task>
     <servers />
   </component>
@@ -558,5 +558,9 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
