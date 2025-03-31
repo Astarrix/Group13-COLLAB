@@ -14,6 +14,15 @@
   <component name="ChangeListManager">
     <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
+=======
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_ArmPickup.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_ArmPickup.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_Railgun.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_Railgun.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/Bp_1RailGun.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/Bp_1RailGun.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.h" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -524,10 +533,19 @@
       <workItem from="1742490949239" duration="635000" />
       <workItem from="1742491695312" duration="562000" />
       <workItem from="1742575139014" duration="2000" />
+<<<<<<< Updated upstream
       <workItem from="1742810969997" duration="1731000" />
       <workItem from="1742813177877" duration="2355000" />
       <workItem from="1742817092149" duration="309000" />
       <workItem from="1743434389363" duration="1197000" />
+=======
+      <workItem from="1742911945056" duration="902000" />
+      <workItem from="1742991414721" duration="798000" />
+      <workItem from="1743341783080" duration="10000" />
+      <workItem from="1743415552381" duration="65000" />
+      <workItem from="1743415818579" duration="89000" />
+      <workItem from="1743436198193" duration="9479000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
