@@ -13,17 +13,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Audio/SFXs/Music_1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Audio/SFXs/Splat_SFX.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Audio/SFXs/ding-SFX.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BloodSplatterSpawner/BP_BloodSplatter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BloodSplatterSpawner/BP_BloodSplatter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BloodSplatterSpawner/BP_BloodSplatterSpawner.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BloodSplatterSpawner/BP_BloodSplatterSpawner.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_PowerWasher.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_PowerWasher.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_Railgun.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_Railgun.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/NS_BloodExplosion.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/NS_BloodExplosion.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Group_13.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Group_13.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +27,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../EpicGames/UE_5.4/Engine/Source/Runtime/Engine/Private/Components/AudioComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../EpicGames/UE_5.4/Engine/Source/Runtime/Engine/Private/Components/SceneComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../EpicGames/UE_5.4/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../EpicGames/UE_5.4/Engine/Source/Runtime/Engine/Private/KismetSystemLibrary.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -565,6 +555,7 @@
       <workItem from="1743422991943" duration="595000" />
       <workItem from="1743427135519" duration="1000" />
       <workItem from="1743430576546" duration="601000" />
+      <workItem from="1743446938982" duration="33000" />
     </task>
     <servers />
   </component>
