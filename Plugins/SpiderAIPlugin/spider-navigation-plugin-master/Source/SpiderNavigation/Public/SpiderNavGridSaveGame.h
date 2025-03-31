@@ -23,7 +23,9 @@
 #pragma once
 
 #include "GameFramework/SaveGame.h"
-#include "SpiderNavGridSaveGame.generated.h"
+//#include "SpiderNavGridSaveGame.generated.h"
+#include "../Public/SpiderNavGridSaveGame.generated.h"
+//#include "SpiderNavGridSaveGame.generated.h"
 
 /** Describes relations between navigation points*/
 USTRUCT()
