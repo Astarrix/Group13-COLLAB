@@ -14,7 +14,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/LineTraceWeapon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Group_13/Private/Weapon/LineTraceWeapon.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -528,7 +527,7 @@
       <workItem from="1742810969997" duration="1731000" />
       <workItem from="1742813177877" duration="2355000" />
       <workItem from="1742817092149" duration="309000" />
-      <workItem from="1743434389363" duration="585000" />
+      <workItem from="1743434389363" duration="1197000" />
     </task>
     <servers />
   </component>
