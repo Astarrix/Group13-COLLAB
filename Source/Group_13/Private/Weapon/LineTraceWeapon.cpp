@@ -3,14 +3,18 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Actor.h"
 #include "DrawDebugHelpers.h"
-#include "DynamicMesh/DynamicMesh3.h"
+
+void ALineTraceWeapon::Fire()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Fire function called"));
+	
+	LineTraceFire();
+}
 
 void ALineTraceWeapon::LineTraceFire()
 {
-	// Call the parent Fire() functionality
-	Super::Fire(); // or AWeaponBase::Fire()
-
-	UE_LOG(LogTemp, Warning, TEXT("PENIS"));
+	Super::Fire();
+	
 	if (!GetWorld()) return;
     
 	// Get the starting location from the muzzle (or the actor's location if no muzzle exists)
