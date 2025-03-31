@@ -7,6 +7,7 @@
 #include "AIClimbController.generated.h"
 
 class UBehaviorTreeComponent;
+class ASpiderNavigation;
 
 UCLASS(Abstract)
 class GROUP_13_API AAIClimbController : public AAIController
@@ -18,24 +19,24 @@ public:
 	AAIClimbController();
 
 protected:
-	APawn* PossessPawn;
-	FVector AiLocation;
-	bool test;
-
-	FVector MoveDesination;
-	FVector LocalMove;
-	TArray<FVector> CurrentPath;
-	bool LocalPathFound;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<ASpiderNavigation> _SpiderNav;
-	
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
-	TObjectPtr<ASpiderNavigation> _SpiderNavRef;
+	//APawn* PossessPawn;
+	// FVector AiLocation;
+	// bool test;
+	//
+	// FVector MoveDesination;
+	// FVector LocalMove;
+	// TArray<FVector> CurrentPath;
+	// bool LocalPathFound;
+	//
+	// UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	// TSubclassOf<ASpiderNavigation> _SpiderNav;
+	//
+	// UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	// TObjectPtr<ASpiderNavigation> _SpiderNavRef;
 
 	//UBlackboardComponent* _Blackboard;
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	UBehaviorTreeComponent* GetBehaviourTree;
+	//UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	//UBehaviorTreeComponent* GetBehaviourTree;
 	
 	
 	virtual void OnPossess(APawn* InPawn) override;

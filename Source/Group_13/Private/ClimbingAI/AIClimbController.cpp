@@ -19,8 +19,8 @@ void AAIClimbController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 
-	PossessPawn = InPawn;
-	RunBehaviorTree(GetBehaviourTree(InPawn));
+	// PossessPawn = InPawn;
+	// RunBehaviorTree(GetBehaviourTree(InPawn));
 	//if wanna do home location do it in pawn?
 	//GetBlackboardComponent()->SetValueAsVector("HomeLocation", GetActorLocation());
 }
@@ -30,11 +30,11 @@ void AAIClimbController::BeginPlay()
 {	
 	Super::BeginPlay();
 
-	if(_SpiderNav)
-	{
-		FActorSpawnParameters spawnParams;
-		_SpiderNavRef = GetWorld()->SpawnActor<ASpiderNavigation>(_SpiderNav, spawnParams);
-	}
+	// if(_SpiderNav)
+	// {
+	// 	FActorSpawnParameters spawnParams;
+	// 	_SpiderNavRef = GetWorld()->SpawnActor<ASpiderNavigation>(_SpiderNav, spawnParams);
+	// }
 	
 }
 
@@ -46,10 +46,10 @@ void AAIClimbController::Tick(float DeltaTime)
 
 void AAIClimbController::Move(FVector Destination)
 {
-	AiLocation = PossessPawn->GetActorLocation();
-	MoveDesination = _SpiderNavRef->FindClosestNodeLocation(AiLocation);
-	CurrentPath = _SpiderNavRef->FindPath(AiLocation,MoveDesination,test);
-	CurrentPath.Remove(CurrentPath[0]);
+	// AiLocation = PossessPawn->GetActorLocation();
+	// MoveDesination = _SpiderNavRef->FindClosestNodeLocation(AiLocation);
+	// CurrentPath = _SpiderNavRef->FindPath(AiLocation,MoveDesination,test);
+	// CurrentPath.Remove(CurrentPath[0]);
 	//update local move
 	//|_> if local path found must move = true
 }
@@ -61,9 +61,9 @@ void AAIClimbController::UpdateRotation()
 
 void AAIClimbController::UpdateLocalMove()
 {
-	if(CurrentPath.Max()>0)
-	{
-		
-	}
+	// if(CurrentPath.Max()>0)
+	// {
+	// 	
+	// }
 }
 
