@@ -3,14 +3,18 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Actor.h"
 #include "DrawDebugHelpers.h"
-#include "DynamicMesh/DynamicMesh3.h"
+
+void ALineTraceWeapon::Fire()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Fire function called"));
+	
+	LineTraceFire();
+}
 
 void ALineTraceWeapon::LineTraceFire()
 {
-	// Call the parent Fire() functionality
-	Super::Fire(); // or AWeaponBase::Fire()
-
-	UE_LOG(LogTemp, Warning, TEXT("PENIS"));
+	Super::Fire();
+	
 	if (!GetWorld()) return;
     
 	// Get the starting location from the muzzle (or the actor's location if no muzzle exists)
@@ -37,4 +41,3 @@ void ALineTraceWeapon::LineTraceFire()
 	FColor LineColor = HitResult.bBlockingHit ? FColor::Red : FColor::Green;
 	DrawDebugLine(GetWorld(), Start, End, LineColor, false, 5.0f, 0, 2.0f);
 }
-
