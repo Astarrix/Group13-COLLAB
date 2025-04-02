@@ -13,10 +13,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Content/Assets/NS_FoamRing.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/NS_FoamRing.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets/Rig/MF_Pixelate.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets/SkyboxAsset01/ColabSkybox_HDRI.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets/SkyboxAsset01/ColabSkybox_HDRI_pixelated.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/BP_InteractibleParent.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Shop/BP_ShopItem.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Shop/BP_ShopItem_Spawn.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Shop/BP_ShopItem_StatUpgrade.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Shop/eStatUpgradeType.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Interfaces/BPI_LookAt.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Input/InputActions/IA_Interact.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/UI/WUI/WUI_ShopTooltip.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/NS_Wisp.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/PP_PixelHighlight.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/PP_PixelOverlay.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Import/UpgradeVan/4/M_VanExterior.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Import/UpgradeVan/4/M_VanExterior.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Import/UpgradeVan/4/van_SM_Truck.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Import/UpgradeVan/4/van_SM_Truck.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Materials/M_DirtyWindow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Materials/M_DirtyWindow.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Rig/spray_bottle_texture/spray_bottle_material_BaseColor_Mat.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Rig/spray_bottle_texture/spray_bottle_material_BaseColor_Mat.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/SkyboxAsset01/Skybox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/SkyboxAsset01/Skybox.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_WeaponPickup.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_WeaponPickup.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Tools/BPI_ActorCalls.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Tools/BPI_ActorCalls.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/UIC_ModeSignifier.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/UIC_ModeSignifier.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/BP_BasePickup.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/BP_BasePickup.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/BP_Van.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/BP_Van.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_ArmPickup.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_ArmPickup.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Input/IMC_Main.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Input/IMC_Main.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/PP_Shader.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/PP_Shader.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +62,7 @@
     <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/Weapon_Projectile.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Editor/BlueprintEditorLibrary/Public/BlueprintEditorLibrary.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Editor/Kismet/Private/BPDelegateDragDropAction.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/Kismet/KismetStringLibrary.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
@@ -50,21 +77,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C++ Project.Group_13.executor": "Run",
-    "C/C++ Project.Group_13.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main-DNU",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C++ Project.Group_13.executor&quot;: &quot;Run&quot;,
+    &quot;C/C++ Project.Group_13.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main-DNU&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.EpicGames.AspNet">
     <configuration name="Group_13" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -556,6 +583,7 @@
       <workItem from="1742911945056" duration="902000" />
       <workItem from="1742991414721" duration="798000" />
       <workItem from="1743341783080" duration="10000" />
+      <workItem from="1743445166391" duration="578000" />
     </task>
     <servers />
   </component>
