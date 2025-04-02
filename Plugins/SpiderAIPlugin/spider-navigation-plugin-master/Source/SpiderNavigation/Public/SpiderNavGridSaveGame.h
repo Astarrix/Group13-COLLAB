@@ -39,7 +39,7 @@ struct FSpiderNavRelations
 /**
  *  A USaveGame's extension to store navigation
  */
-UCLASS()
+UCLASS() 
 class USpiderNavGridSaveGame : public USaveGame
 {
 	GENERATED_BODY()
