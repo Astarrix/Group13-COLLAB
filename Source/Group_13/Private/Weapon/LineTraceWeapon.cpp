@@ -41,4 +41,3 @@ void ALineTraceWeapon::LineTraceFire()
 	FColor LineColor = HitResult.bBlockingHit ? FColor::Red : FColor::Green;
 	DrawDebugLine(GetWorld(), Start, End, LineColor, false, 5.0f, 0, 2.0f);
 }
-
