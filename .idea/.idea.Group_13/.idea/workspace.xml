@@ -14,10 +14,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/VFX/Beam.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_Railgun.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_Railgun.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/L_PLAYGROUND.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/L_PLAYGROUND.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/VFX/NS_RailVFX.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/NS_RailVFX.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/NewNiagaraSystem.uasset" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -534,7 +534,7 @@
       <workItem from="1743445166391" duration="578000" />
       <workItem from="1743526964227" duration="1657000" />
       <workItem from="1743606311582" duration="1691000" />
-      <workItem from="1743681681808" duration="4886000" />
+      <workItem from="1743681681808" duration="6084000" />
     </task>
     <servers />
   </component>
