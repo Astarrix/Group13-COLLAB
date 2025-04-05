@@ -26,7 +26,7 @@ public:
 	void StartFire();
 	UFUNCTION(BlueprintCallable)
 	void StopFire();
-
+	
 protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<USceneComponent> _Root;

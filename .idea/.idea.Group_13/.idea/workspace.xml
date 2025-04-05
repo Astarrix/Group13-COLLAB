@@ -13,15 +13,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdd449b2-0885-4276-b542-6bcb344f0400" name="Changes" comment="">
+<<<<<<< HEAD
+      <change afterPath="$PROJECT_DIR$/Content/VFX/Particles/Assets/Positive_sparkle.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/Particles/Assets/coin.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/Particles/Assets/negative_sparkle.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/Particles/Assets/soap_bubble.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/Particles/Assets/water_bubble.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/Particles/NS_FoamRing.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/Particles/NS_WaterJet.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/Particles/NS_Wisp.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/VFX/Particles/PM_Bubbles.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Group_13/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BloodSplatterSpawner/BP_BloodSplatter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BloodSplatterSpawner/BP_BloodSplatter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_PlayerController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/A_Target.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/A_Target.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Shop/BP_ShopItem_Spawn.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Shop/BP_ShopItem_Spawn.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Shop/BP_Van.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Shop/BP_Van.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_ArmPickup.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_ArmPickup.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LEVEL_0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/BP_BasePickup.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/BP_BasePickup.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_PowerWasher.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameplayElements/Weapons/BP_PowerWasher.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/L_PLAYGROUND.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/L_PLAYGROUND.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/NS_FoamRing.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/NS_FoamRing.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/NS_WaterJet.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/NS_WaterJet.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/NS_Wisp.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/NS_Wisp.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SpiderAIPlugin/spider-navigation-plugin-master/Content/DebugBuilder/DebugSpiderNavigationBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SpiderAIPlugin/spider-navigation-plugin-master/Content/DebugBuilder/DebugSpiderNavigationBP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SpiderAIPlugin/spider-navigation-plugin-master/Content/SpiderAIController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SpiderAIPlugin/spider-navigation-plugin-master/Content/SpiderAIController.uasset" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Group_13.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Group_13.sln.DotSettings.user" afterDir="false" />
+>>>>>>> origin/coles_branch
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,14 +49,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+<<<<<<< HEAD
+    <setting file="file://$PROJECT_DIR$/Plugins/SpiderAIPlugin/spider-navigation-plugin-master/Source/SpiderNavigation/Public/SpiderNavGridBuilder.h" root0="SKIP_HIGHLIGHTING" />
+=======
+    <setting file="file://$PROJECT_DIR$/../../EpicGames/UE_5.4/Engine/Source/Runtime/Engine/Private/Components/AudioComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../EpicGames/UE_5.4/Engine/Source/Runtime/Engine/Private/Components/SceneComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../EpicGames/UE_5.4/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../EpicGames/UE_5.4/Engine/Source/Runtime/Engine/Private/KismetSystemLibrary.cpp" root0="FORCE_HIGHLIGHTING" />
+>>>>>>> origin/coles_branch
     <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/Projectile.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/WeaponBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Group_13/Private/Weapon/Weapon_Projectile.cpp" root0="FORCE_HIGHLIGHTING" />
+<<<<<<< HEAD
     <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Editor/BlueprintEditorLibrary/Public/BlueprintEditorLibrary.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Editor/Kismet/Private/BPDelegateDragDropAction.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/Kismet/KismetStringLibrary.h" root0="FORCE_HIGHLIGHTING" />
+=======
+>>>>>>> origin/coles_branch
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="Toolset" />
@@ -56,22 +81,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C++ Project.Group_13.executor": "Run",
-    "C/C++ Project.Group_13.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Josh-Branch",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C++ Project.Group_13.executor&quot;: &quot;Run&quot;,
+    &quot;C/C++ Project.Group_13.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;coles__branch&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="C++ Project.Group_13">
+}</component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.EpicGames.AspNet">
     <configuration name="Group_13" type="CppProject" factoryName="C++ Project">
       <configuration_1>
         <option name="CONFIGURATION" value="Development Editor" />
@@ -560,8 +585,16 @@
       <workItem from="1742911945056" duration="902000" />
       <workItem from="1742991414721" duration="798000" />
       <workItem from="1743341783080" duration="10000" />
+<<<<<<< HEAD
       <workItem from="1743445166391" duration="578000" />
       <workItem from="1743526964227" duration="1657000" />
+      <workItem from="1743609816949" duration="199000" />
+=======
+      <workItem from="1743422991943" duration="595000" />
+      <workItem from="1743427135519" duration="1000" />
+      <workItem from="1743430576546" duration="601000" />
+      <workItem from="1743446938982" duration="33000" />
+>>>>>>> origin/coles_branch
     </task>
     <servers />
   </component>
