@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "AiSpawner.generated.h"
 
+class UArrowComponent;
 class AAIPawn;
 class UHealthComponent;
 
@@ -22,9 +23,21 @@ public:
 
 protected:
 
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<UStaticMesh> _Mesh;
+	
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<UArrowComponent> _SpawnLocation;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AAIPawn> _AiClass;
 
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
+	TArray<AActor*> _BugArray;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float maxBugs;
+ 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UHealthComponent> _Health;
 	

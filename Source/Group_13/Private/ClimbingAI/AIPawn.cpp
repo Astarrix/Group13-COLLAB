@@ -3,6 +3,7 @@
 
 #include "AIPawn.h"
 
+#include "Components/ArrowComponent.h"
 #include "HealthComp/HealthComponent.h"
 
 
@@ -19,11 +20,27 @@ void AAIPawn::BeginPlay()
 	
 	_Health->OnDamaged.AddUniqueDynamic(this,&AAIPawn::Handle_HealthDamaged);
 	_Health->OnDead.AddUniqueDynamic(this, &AAIPawn::Handle_HealthDead);
+
+	
+}
+
+void AAIPawn::DropDecal()
+{
+	UWorld* const world = GetWorld();
+	if(world == nullptr || _BloodSplatter == nullptr){ return;}
+	
+	FActorSpawnParameters spawnParams;
+	spawnParams.Owner = GetOwner();
+	//spawnParams.Instigator = GetInstigator();
+	//spawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+
+	world->SpawnActor(_BloodSplatter, &_DecalLocation->GetComponentTransform(), spawnParams);
 }
 
 void AAIPawn::Handle_HealthDamaged(float current, float max, float change)
 {
 	UE_LOG(LogTemp,Display,TEXT("dmg"));
+	DropDecal();
 }
 
 void AAIPawn::Handle_HealthDead(AController* causer)

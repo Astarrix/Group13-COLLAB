@@ -4,6 +4,8 @@
 #include "AiSpawner.h"
 
 #include "AIPawn.h"
+#include "Components/ArrowComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 
 // Sets default values
@@ -17,6 +19,8 @@ AAiSpawner::AAiSpawner()
 void AAiSpawner::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SpawnBug();
 	
 }
 
@@ -26,7 +30,13 @@ void AAiSpawner::SpawnBug()
 	if(world == nullptr || _AiClass == nullptr) {return;}
 
 	FActorSpawnParameters spawnParams;
-	//world->SpawnActor(_AiClass, )
+
+	if(_BugArray.Num()>= maxBugs)
+	{
+		world->SpawnActor(_AiClass, &_SpawnLocation->GetComponentTransform(), spawnParams);
+	}
+	
+	UGameplayStatics::GetAllActorsOfClass(world,AAIPawn::StaticClass(),_BugArray);
 }
 
 void AAiSpawner::Handle_HealthDamaged(float current, float max, float change)

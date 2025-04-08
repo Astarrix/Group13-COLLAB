@@ -6,6 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "AIPawn.generated.h"
 
+class UArrowComponent;
 class UHealthComponent;
 
 UCLASS(Abstract)
@@ -21,6 +22,12 @@ protected:
 
 #pragma region Components
 
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<UArrowComponent> _DecalLocation;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AActor> _BloodSplatter;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UHealthComponent> _Health;
 	
@@ -28,6 +35,9 @@ protected:
 	
 	virtual void BeginPlay() override;
 
+	UFUNCTION()
+	void DropDecal();
+	
 	UFUNCTION()
 	void Handle_HealthDamaged(float current, float max, float change);
 	UFUNCTION()
