@@ -22,14 +22,30 @@ protected:
 
 #pragma region Components
 
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<UArrowComponent> _DecalLocation;
-	
+	//order the components with the highest being the most likely to be adjusted by a designer for convenience.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AActor> _BloodSplatter;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UHealthComponent> _Health;
+	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	float DecalDelay;
+	
+	FTimerHandle DecalSpawnTimer;
+
+	//these are all in the side view so ordering is not as important
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<USceneComponent> _Root;
+
+	UPROPERTY(VisibleDefaultsOnly,BlueprintReadWrite)
+	TObjectPtr<UStaticMeshComponent> _Mesh;
+	
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<UArrowComponent> _DecalLocation;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<UArrowComponent> _ForwardArrow;
 	
 #pragma endregion 
 	
