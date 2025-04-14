@@ -4,6 +4,7 @@
 #include "AIPawn.h"
 
 #include "Components/ArrowComponent.h"
+#include "Components/SphereComponent.h"
 #include "HealthComp/HealthComponent.h"
 
 
@@ -17,7 +18,10 @@ AAIPawn::AAIPawn()
 	_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));
 	_Mesh->SetupAttachment(RootComponent);
 
-	_DecalLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("Should Point Down"));
+	_StoppingDistance = CreateDefaultSubobject<USphereComponent>(TEXT("Stopping Distance"));
+	_StoppingDistance->SetupAttachment(RootComponent);
+
+	_DecalLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("Point Down"));
 	_DecalLocation->SetupAttachment(RootComponent);
 
 	_ForwardArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Faces Forward, Don't Rotate"));
@@ -48,6 +52,17 @@ void AAIPawn::DropDecal()
 	spawnParams.Owner = GetOwner();
 	world->SpawnActor(_BloodSplatter, &_DecalLocation->GetComponentTransform(), spawnParams);
 }
+
+void AAIPawn::NotifyActorBeginOverlap(AActor* OtherActor)
+{
+	Super::NotifyActorBeginOverlap(OtherActor);
+
+	//if(OtherActor != nullptr && OtherActor != this)
+	//{
+		
+	//}
+}
+
 
 void AAIPawn::Handle_HealthDamaged(float current, float max, float change)
 {

@@ -6,6 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "AIPawn.generated.h"
 
+class USphereComponent;
 class UArrowComponent;
 class UHealthComponent;
 
@@ -40,6 +41,9 @@ protected:
 
 	UPROPERTY(VisibleDefaultsOnly,BlueprintReadWrite)
 	TObjectPtr<UStaticMeshComponent> _Mesh;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TObjectPtr<USphereComponent> _StoppingDistance;
 	
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UArrowComponent> _DecalLocation;
@@ -53,7 +57,12 @@ protected:
 
 	UFUNCTION()
 	void DropDecal();
+
+	//collision functions
+	UFUNCTION()
+	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 	
+	//health 
 	UFUNCTION()
 	void Handle_HealthDamaged(float current, float max, float change);
 	UFUNCTION()
