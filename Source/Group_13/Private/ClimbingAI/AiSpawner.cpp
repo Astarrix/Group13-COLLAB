@@ -5,6 +5,7 @@
 
 #include "AIPawn.h"
 #include "Components/ArrowComponent.h"
+#include "HealthComp/HealthComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 
@@ -13,6 +14,18 @@ AAiSpawner::AAiSpawner()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	//PrimaryActorTick.bCanEverTick = true;
+
+	//components
+	_Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	RootComponent = _Root;
+
+	_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Spawner Mesh"));
+	_Mesh->SetupAttachment(RootComponent);
+
+	_SpawnLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("Spawn Lcoation"));
+	_SpawnLocation->SetupAttachment(_Mesh);
+
+	_Health = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));	
 }
 
 // Called when the game starts or when spawned

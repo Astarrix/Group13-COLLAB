@@ -24,7 +24,10 @@ public:
 protected:
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<UStaticMesh> _Mesh;
+	TObjectPtr<USceneComponent> _Root;
+	
+	UPROPERTY(VisibleDefaultsOnly,BlueprintReadWrite)
+	TObjectPtr<UStaticMeshComponent> _Mesh;
 	
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UArrowComponent> _SpawnLocation;
