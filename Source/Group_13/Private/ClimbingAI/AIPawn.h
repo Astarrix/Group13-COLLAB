@@ -30,6 +30,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UHealthComponent> _Health;
 	
+	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float DecalDelay;
 	
@@ -52,6 +53,9 @@ protected:
 	TObjectPtr<UArrowComponent> _ForwardArrow;
 	
 #pragma endregion 
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void BugSpawned();
 	
 	virtual void BeginPlay() override;
 

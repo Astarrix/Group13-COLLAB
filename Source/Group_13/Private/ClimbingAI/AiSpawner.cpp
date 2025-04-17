@@ -23,18 +23,9 @@ AAiSpawner::AAiSpawner()
 	_Mesh->SetupAttachment(RootComponent);
 
 	_SpawnLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("Spawn Lcoation"));
-	_SpawnLocation->SetupAttachment(_Mesh);
+	_SpawnLocation->SetupAttachment(RootComponent);
 
 	_Health = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));	
-}
-
-// Called when the game starts or when spawned
-void AAiSpawner::BeginPlay()
-{
-	Super::BeginPlay();
-
-	SpawnBug();
-	
 }
 
 void AAiSpawner::SpawnBug()
@@ -43,14 +34,47 @@ void AAiSpawner::SpawnBug()
 	if(world == nullptr || _AiClass == nullptr) {return;}
 
 	FActorSpawnParameters spawnParams;
+	spawnParams.Owner = GetOwner();
 
-	if(_BugArray.Num()>= maxBugs)
-	{
-		world->SpawnActor(_AiClass, &_SpawnLocation->GetComponentTransform(), spawnParams);
-	}
+	//if(_BugArray.Num()>= maxBugs )
 	
-	UGameplayStatics::GetAllActorsOfClass(world,AAIPawn::StaticClass(),_BugArray);
+	//world->SpawnActor(_AiClass, &_SpawnLocation->GetComponentTransform(), spawnParams);
+	
+	UE_LOG(LogTemp,Display,TEXT("spawn bug"));
+
+	world->SpawnActor(_AiClass, &_SpawnLocation->GetComponentTransform(), spawnParams);
+	
+	
+	//UGameplayStatics::GetAllActorsOfClass(world,AAIPawn::StaticClass(),_BugArray);
+
+	SettupBug();
 }
+
+void AAiSpawner::SettupBug_Implementation()
+{
+	
+}
+
+// Called when the game starts or when spawned
+void AAiSpawner::BeginPlay()
+{
+	Super::BeginPlay();
+
+	//SpawnBug();
+	
+	_Health->OnDamaged.AddUniqueDynamic(this,&AAiSpawner::Handle_HealthDamaged);
+	_Health->OnDead.AddUniqueDynamic(this, &AAiSpawner::Handle_HealthDead);
+
+	UE_LOG(LogTemp,Display,TEXT("begin timer"));
+	GetWorld()->GetTimerManager().SetTimer(SpawnBugTimer,this,&AAiSpawner::SpawnBug,SpawnDelay, true);
+	
+	
+}
+
+//void AAiSpawner::SpawnBug()
+//{
+	
+//}
 
 void AAiSpawner::Handle_HealthDamaged(float current, float max, float change)
 {

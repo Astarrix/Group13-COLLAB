@@ -31,6 +31,11 @@ AAIPawn::AAIPawn()
 	
 }
 
+void AAIPawn::BugSpawned_Implementation()
+{
+	//controlled in blueprint?
+}
+
 // Called when the game starts or when spawned
 void AAIPawn::BeginPlay()
 {
