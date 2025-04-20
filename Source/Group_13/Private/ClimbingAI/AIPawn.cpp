@@ -77,6 +77,7 @@ void AAIPawn::Handle_HealthDamaged(float current, float max, float change)
 
 void AAIPawn::Handle_HealthDead(AController* causer)
 {
+	OnPawnDead.Broadcast();
 	Destroy();
 }
 

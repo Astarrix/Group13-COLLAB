@@ -6,6 +6,8 @@
 #include "GameFramework/Pawn.h"
 #include "AIPawn.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FPawnDeadSignature);
+
 class USphereComponent;
 class UArrowComponent;
 class UHealthComponent;
@@ -19,6 +21,9 @@ public:
 	// Sets default values for this pawn's properties
 	AAIPawn();
 
+	UPROPERTY(BlueprintAssignable)
+	FPawnDeadSignature OnPawnDead;
+
 protected:
 
 #pragma region Components
@@ -28,8 +33,7 @@ protected:
 	TSubclassOf<AActor> _BloodSplatter;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TObjectPtr<UHealthComponent> _Health;
-	
+	TObjectPtr<UHealthComponent> _Health;	
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float DecalDelay;
@@ -51,6 +55,8 @@ protected:
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UArrowComponent> _ForwardArrow;
+
+	
 	
 #pragma endregion 
 

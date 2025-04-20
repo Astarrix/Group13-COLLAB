@@ -36,18 +36,20 @@ void AAiSpawner::SpawnBug()
 	FActorSpawnParameters spawnParams;
 	spawnParams.Owner = GetOwner();
 
-	//if(_BugArray.Num()>= maxBugs )
-	
-	//world->SpawnActor(_AiClass, &_SpawnLocation->GetComponentTransform(), spawnParams);
-	
-	UE_LOG(LogTemp,Display,TEXT("spawn bug"));
+	if(currentBugs < maxBugs )
+	{
+		world->SpawnActor(_AiClass, &_SpawnLocation->GetComponentTransform(), spawnParams);
+		SettupBug();
+		if(_AIReference != nullptr)
+		{
+			_AIReference->OnPawnDead.AddUniqueDynamic(this, &AAiSpawner::Handle_PawnDead);
+			UE_LOG(LogTemp,Display,TEXT(" bug"));	
+		}
+		currentBugs++;
+	}		
 
-	world->SpawnActor(_AiClass, &_SpawnLocation->GetComponentTransform(), spawnParams);
 	
-	
-	//UGameplayStatics::GetAllActorsOfClass(world,AAIPawn::StaticClass(),_BugArray);
-
-	SettupBug();
+	//UGameplayStatics::GetAllActorsOfClass(world,AAIPawn::StaticClass(),_BugArray);	
 }
 
 void AAiSpawner::SettupBug_Implementation()
@@ -58,17 +60,21 @@ void AAiSpawner::SettupBug_Implementation()
 // Called when the game starts or when spawned
 void AAiSpawner::BeginPlay()
 {
-	Super::BeginPlay();
-
-	//SpawnBug();
+	Super::BeginPlay();	
 	
 	_Health->OnDamaged.AddUniqueDynamic(this,&AAiSpawner::Handle_HealthDamaged);
-	_Health->OnDead.AddUniqueDynamic(this, &AAiSpawner::Handle_HealthDead);
+	_Health->OnDead.AddUniqueDynamic(this, &AAiSpawner::Handle_HealthDead);	
 
 	UE_LOG(LogTemp,Display,TEXT("begin timer"));
 	GetWorld()->GetTimerManager().SetTimer(SpawnBugTimer,this,&AAiSpawner::SpawnBug,SpawnDelay, true);
 	
 	
+}
+
+void AAiSpawner::Handle_PawnDead()
+{
+	currentBugs--;
+	UE_LOG(LogTemp,Display,TEXT(" bug dead"));	
 }
 
 //void AAiSpawner::SpawnBug()

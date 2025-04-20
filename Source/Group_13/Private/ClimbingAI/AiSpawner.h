@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "AiSpawner.generated.h"
 
+
+
 class UArrowComponent;
 class AAIPawn;
 class UHealthComponent;
@@ -44,6 +46,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float maxBugs;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	float currentBugs;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float SpawnDelay;
 	
@@ -65,7 +70,10 @@ protected:
 #pragma endregion
 	
 	// Called when the game starts or when spawned
-	virtual void BeginPlay() override; 
+	virtual void BeginPlay() override;
+
+	UFUNCTION()
+	void Handle_PawnDead();
 
 	UFUNCTION()
 	void Handle_HealthDamaged(float current, float max, float change);
