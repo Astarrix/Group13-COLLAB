@@ -9,7 +9,7 @@
 class UProjectileMovementComponent;
 class USphereComponent;
 
-UCLASS()
+UCLASS(Abstract)
 class GROUP_13_API AAIProjectile : public AActor
 {
 	GENERATED_BODY()
@@ -31,7 +31,7 @@ protected:
 	TObjectPtr<UStaticMeshComponent> _Mesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)	
-	float _Slowness;
+	float _SlownessPerc;
 	
 #pragma endregion
 	

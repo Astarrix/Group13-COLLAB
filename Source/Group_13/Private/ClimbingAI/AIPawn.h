@@ -37,8 +37,12 @@ protected:
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float DecalDelay;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	float _ShootDelay;
 	
 	FTimerHandle DecalSpawnTimer;
+	FTimerHandle ShootTimer;
 
 	//these are all in the side view so ordering is not as important
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
@@ -49,6 +53,12 @@ protected:
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	TObjectPtr<USphereComponent> _StoppingDistance;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TObjectPtr<USphereComponent> _ShootingDistance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<USphereComponent> _SightRange;
 	
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UArrowComponent> _DecalLocation;
@@ -73,7 +83,8 @@ protected:
 
 	//collision functions
 	UFUNCTION()
-	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
+	void ShootingOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
 	
 	//health 
 	UFUNCTION()
