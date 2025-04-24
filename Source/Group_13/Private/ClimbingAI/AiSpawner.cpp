@@ -66,9 +66,7 @@ void AAiSpawner::BeginPlay()
 	_Health->OnDead.AddUniqueDynamic(this, &AAiSpawner::Handle_HealthDead);	
 
 	UE_LOG(LogTemp,Display,TEXT("begin timer"));
-	GetWorld()->GetTimerManager().SetTimer(SpawnBugTimer,this,&AAiSpawner::SpawnBug,SpawnDelay, true);
-	
-	
+	GetWorld()->GetTimerManager().SetTimer(SpawnBugTimer,this,&AAiSpawner::SpawnBug,SpawnDelay, true);	
 }
 
 void AAiSpawner::Handle_PawnDead()

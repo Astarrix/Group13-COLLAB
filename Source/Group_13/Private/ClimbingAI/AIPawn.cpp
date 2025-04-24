@@ -47,6 +47,10 @@ void AAIPawn::BeginPlay()
 	GetWorld()->GetTimerManager().SetTimer(DecalSpawnTimer, this, &AAIPawn::DropDecal, DecalDelay,true);
 }
 
+void AAIPawn::Shoot()
+{
+}
+
 void AAIPawn::DropDecal()
 {
 	//spawns a blueprint attached decal based on timer

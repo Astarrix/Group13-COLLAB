@@ -65,6 +65,9 @@ protected:
 	
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintCallable)
+	void Shoot();
+	
 	UFUNCTION()
 	void DropDecal();
 

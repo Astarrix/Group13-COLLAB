@@ -79,4 +79,6 @@ protected:
 	void Handle_HealthDamaged(float current, float max, float change);
 	UFUNCTION()
 	void Handle_HealthDead(AController* causer);
+
+	//todo: make spawner use an interface to the ai controller :)
 };
