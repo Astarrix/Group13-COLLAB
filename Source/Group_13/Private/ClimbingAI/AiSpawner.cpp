@@ -43,12 +43,10 @@ void AAiSpawner::SpawnBug()
 		if(_AIReference != nullptr)
 		{
 			_AIReference->OnPawnDead.AddUniqueDynamic(this, &AAiSpawner::Handle_PawnDead);
-			UE_LOG(LogTemp,Display,TEXT(" bug"));	
+			
 		}
 		currentBugs++;
 	}		
-
-	
 	//UGameplayStatics::GetAllActorsOfClass(world,AAIPawn::StaticClass(),_BugArray);	
 }
 
@@ -75,13 +73,9 @@ void AAiSpawner::Handle_PawnDead()
 	UE_LOG(LogTemp,Display,TEXT(" bug dead"));	
 }
 
-//void AAiSpawner::SpawnBug()
-//{
-	
-//}
-
 void AAiSpawner::Handle_HealthDamaged(float current, float max, float change)
 {
+	
 }
 
 void AAiSpawner::Handle_HealthDead(AController* causer)

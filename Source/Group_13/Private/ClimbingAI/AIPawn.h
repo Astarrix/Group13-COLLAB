@@ -8,6 +8,7 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FPawnDeadSignature);
 
+class AAIProjectile;
 class USphereComponent;
 class UArrowComponent;
 class UHealthComponent;
@@ -30,10 +31,13 @@ protected:
 
 	//order the components with the highest being the most likely to be adjusted by a designer for convenience.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<UHealthComponent> _Health;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AActor> _BloodSplatter;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TObjectPtr<UHealthComponent> _Health;	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TSubclassOf<AAIProjectile> _ProjectileClass;
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float DecalDelay;
@@ -56,17 +60,12 @@ protected:
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	TObjectPtr<USphereComponent> _ShootingDistance;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TObjectPtr<USphereComponent> _SightRange;
 	
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UArrowComponent> _DecalLocation;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UArrowComponent> _ForwardArrow;
-
-	
 	
 #pragma endregion 
 

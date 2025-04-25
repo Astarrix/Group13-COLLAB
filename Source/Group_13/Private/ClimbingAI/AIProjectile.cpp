@@ -14,16 +14,16 @@ AAIProjectile::AAIProjectile()
 {
 	_Collider = CreateDefaultSubobject<USphereComponent>(TEXT("Collider"));
 	RootComponent = _Collider;
+	_Collider->SetCollisionProfileName("AI Projectile");
+	_Collider->OnComponentHit.AddUniqueDynamic(this, &AAIProjectile::Handle_Hit);
 
 	_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-	_Mesh->SetupAttachment(RootComponent);
+	_Mesh->SetupAttachment(_Collider);
 
 	_Movement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
 	_Movement->UpdatedComponent = _Collider;
 	_Movement->bRotationFollowsVelocity = true;
 	_Movement->bShouldBounce = false;
-
-	_Collider->OnComponentHit.AddUniqueDynamic(this, &AAIProjectile::Handle_Hit);
 }
 
 void AAIProjectile::Handle_Hit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,

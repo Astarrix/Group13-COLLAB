@@ -3,6 +3,7 @@
 
 #include "AIPawn.h"
 
+#include "AIProjectile.h"
 #include "Slowable.h"
 #include "Components/ArrowComponent.h"
 #include "Components/SphereComponent.h"
@@ -25,10 +26,12 @@ AAIPawn::AAIPawn()
 
 	_ShootingDistance = CreateDefaultSubobject<USphereComponent>(TEXT("Shooting Range"));
 	_ShootingDistance->SetupAttachment(RootComponent);
+	_ShootingDistance->SetCollisionProfileName("Shooting Sphere Collision");
 	_ShootingDistance->OnComponentBeginOverlap.AddUniqueDynamic(this,&AAIPawn::ShootingOverlap);
+	//-_ShootingDistance->OnComponent
 
-	_SightRange = CreateDefaultSubobject<USphereComponent>(TEXT("Sight Range"));
-	_SightRange->SetupAttachment(RootComponent);
+	//_SightRange = CreateDefaultSubobject<USphereComponent>(TEXT("Sight Range"));
+	//_SightRange->SetupAttachment(RootComponent);
 
 	_DecalLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("Point Down"));
 	_DecalLocation->SetupAttachment(RootComponent);
@@ -58,12 +61,44 @@ void AAIPawn::BeginPlay()
 
 void AAIPawn::Shoot()
 {
-
-	//FActorSpawnParameters spawnParams;
-	//spawnParams.Owner = GetOwner();
-
 	//todo: debug this and test, remember that sight range is irrelevant shooting distance can do both :)
+
+	//sets the params for the spawned projectile
+	UWorld* const world = GetWorld();
+	if(world == nullptr || _ProjectileClass == nullptr){ return;}
+
+
+	FActorSpawnParameters spawnParams;
+	spawnParams.Owner = GetOwner();
+
+	//this code is taken from the LineTraceWeapon that Josh? made, checks if the player is in front of the ai
 	
+	float TraceDistance = 500.0f;
+	FVector Start = _ForwardArrow->GetComponentLocation();
+	FVector ForwardVector = _ForwardArrow->GetForwardVector();
+	FVector End = Start +(ForwardVector * TraceDistance);
+	TArray<AActor*> ActorsToIgnore;
+		
+	FHitResult HitResult;
+	FCollisionQueryParams QueryParams;
+	QueryParams.AddIgnoredActor(this);
+
+	//if(world->LineTraceSingleByChannel(HitResult, ForwardVector, End, ECC_Visibility, QueryParams))
+	if(UKismetSystemLibrary::LineTraceSingle(world,Start,End,UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2),
+		false,ActorsToIgnore,EDrawDebugTrace::ForDuration,HitResult,true, FLinearColor::Red,
+		FLinearColor::Green, 5))
+	{
+		AActor* ActorName;
+		ActorName = HitResult.GetActor();
+		FString ActorString = ActorName->GetName();
+		UE_LOG(LogClass, Display, TEXT(" shoot"), HitResult.GetActor() );
+		
+		if(UKismetSystemLibrary::DoesImplementInterface(HitResult.GetActor(),USlowable::StaticClass()))
+		{
+			UE_LOG(LogTemp,Display,TEXT("hit player"));	
+			world->SpawnActor(_ProjectileClass, &_ForwardArrow->GetComponentTransform(), spawnParams);
+		}				
+	}
 }
 
 void AAIPawn::DropDecal()
@@ -80,27 +115,15 @@ void AAIPawn::DropDecal()
 void AAIPawn::ShootingOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp,
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	//UE_LOG(LogTemp,Display,TEXT(" shoot overlap "));	
 	if(Other != nullptr && Other != this && OtherComp != nullptr)
-	{		
+	{
 		//v  checks to see if what was overlapped was the player or now via player only interface :)
 		if(UKismetSystemLibrary::DoesImplementInterface(Other,USlowable::StaticClass()))
 		{
-			//do a line trace to see if anything is blocking ais view of player, if not start shoot timer
-			
-			//this code is taken from the LineTraceWeapon that Josh? made
 			UWorld* const world = GetWorld();
-			FVector ForwardVector = GetActorForwardVector();
-			float TraceDistance = 1000.0f;
-			FVector End = (ForwardVector * TraceDistance);
-		
-			FHitResult HitResult;
-			FCollisionQueryParams QueryParams;
-			QueryParams.AddIgnoredActor(this);
-
-			if(world->LineTraceSingleByChannel(HitResult, ForwardVector, End, ECC_Visibility, QueryParams))
-			{
-				world->GetTimerManager().SetTimer(ShootTimer,this, &AAIPawn::Shoot,_ShootDelay,true);
-			}
+			world->GetTimerManager().SetTimer(ShootTimer,this, &AAIPawn::Shoot,_ShootDelay,true);
+			//do a line trace to see if anything is blocking ais view of player, if not start shoot timer			
 		}
 	}
 }
