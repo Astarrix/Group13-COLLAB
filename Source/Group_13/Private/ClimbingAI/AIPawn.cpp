@@ -71,13 +71,13 @@ void AAIPawn::Shoot()
 	FActorSpawnParameters spawnParams;
 	spawnParams.Owner = GetOwner();
 
-	//this code is taken from the LineTraceWeapon that Josh? made, checks if the player is in front of the ai
-	
+	//this code is taken (and tweaked) from the LineTraceWeapon that Josh? made, checks if the player is in front of the ai
 	float TraceDistance = 500.0f;
 	FVector Start = _ForwardArrow->GetComponentLocation();
 	FVector ForwardVector = _ForwardArrow->GetForwardVector();
 	FVector End = Start +(ForwardVector * TraceDistance);
 	TArray<AActor*> ActorsToIgnore;
+	ActorsToIgnore.Add( this); // adds self because setting the trace to ignore itself does nothing apparently
 		
 	FHitResult HitResult;
 	FCollisionQueryParams QueryParams;
@@ -88,14 +88,11 @@ void AAIPawn::Shoot()
 		false,ActorsToIgnore,EDrawDebugTrace::ForDuration,HitResult,true, FLinearColor::Red,
 		FLinearColor::Green, 5))
 	{
-		AActor* ActorName;
-		ActorName = HitResult.GetActor();
-		FString ActorString = ActorName->GetName();
-		UE_LOG(LogClass, Display, TEXT(" shoot"), HitResult.GetActor() );
+		
+		//UE_LOG(LogTemp,Warning, TEXT("shoot %s "), *HitResult.GetActor()->GetName());
 		
 		if(UKismetSystemLibrary::DoesImplementInterface(HitResult.GetActor(),USlowable::StaticClass()))
 		{
-			UE_LOG(LogTemp,Display,TEXT("hit player"));	
 			world->SpawnActor(_ProjectileClass, &_ForwardArrow->GetComponentTransform(), spawnParams);
 		}				
 	}

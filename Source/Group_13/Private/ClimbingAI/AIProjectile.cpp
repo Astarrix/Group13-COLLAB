@@ -31,8 +31,10 @@ void AAIProjectile::Handle_Hit(UPrimitiveComponent* HitComponent, AActor* OtherA
 {
 	if(OtherActor != nullptr && OtherActor != this && OtherComp != nullptr)
 	{
+		UE_LOG(LogTemp,Display,TEXT("hit "));	
 		if(UKismetSystemLibrary::DoesImplementInterface(OtherActor, USlowable::StaticClass()))
 		{
+			UE_LOG(LogTemp,Display,TEXT("hit player"));	
 			ISlowable::Execute_SlowTarget(OtherActor, _SlownessPerc);
 		}
 	}
