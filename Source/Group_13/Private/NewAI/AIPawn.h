@@ -88,7 +88,7 @@ protected:
 
 	//For rotation the mesh to always face player
 	FTimerHandle RotatePawn;
-	float RotationTick = 1.0f;
+	//float RotationTick = 1.0f;
 	
 	UFUNCTION()
 	void ControlRotation(FRotator PlayerRotation);
