@@ -83,11 +83,19 @@ protected:
 	//collision functions
 	UFUNCTION()
 	void ShootingOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	UFUNCTION()
+	void EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	//For rotation the mesh to always face player
+	FTimerHandle RotatePawn;
+	float RotationTick = 1.0f;
+	
+	UFUNCTION()
+	void ControlRotation(FRotator PlayerRotation);
 	
 	//health 
-	UFUNCTION()
+	UFUNCTION(BlueprintNativeEvent)
 	void Handle_HealthDamaged(float current, float max, float change);
-	UFUNCTION()
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void Handle_HealthDead(AController* causer);
 };

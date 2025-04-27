@@ -21,6 +21,10 @@ public:
 protected:
 	// Called when the game starts or when spawned
 #pragma region components
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)	
+	float _SlownessPerc;
+	
 	UPROPERTY(VisibleDefaultsOnly,BlueprintReadOnly)
 	TObjectPtr<USphereComponent> _Collider;
 
@@ -28,11 +32,7 @@ protected:
 	TObjectPtr<UProjectileMovementComponent> _Movement;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
-	TObjectPtr<UStaticMeshComponent> _Mesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)	
-	float _SlownessPerc;
-	
+	TObjectPtr<UStaticMeshComponent> _Mesh;	
 #pragma endregion
 	
 	UFUNCTION()

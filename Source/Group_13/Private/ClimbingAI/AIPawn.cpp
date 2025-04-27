@@ -28,16 +28,16 @@ AAIPawn::AAIPawn()
 	_ShootingDistance->SetupAttachment(RootComponent);
 	_ShootingDistance->SetCollisionProfileName("Shooting Sphere Collision");
 	_ShootingDistance->OnComponentBeginOverlap.AddUniqueDynamic(this,&AAIPawn::ShootingOverlap);
-	//-_ShootingDistance->OnComponent
+	_ShootingDistance->OnComponentEndOverlap.AddUniqueDynamic(this, &AAIPawn::EndShootingOverlap);
 
 	//_SightRange = CreateDefaultSubobject<USphereComponent>(TEXT("Sight Range"));
 	//_SightRange->SetupAttachment(RootComponent);
 
 	_DecalLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("Point Down"));
-	_DecalLocation->SetupAttachment(RootComponent);
+	_DecalLocation->SetupAttachment(_Mesh);
 
 	_ForwardArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Faces Forward, Don't Rotate"));
-	_ForwardArrow->SetupAttachment(RootComponent);
+	_ForwardArrow->SetupAttachment(_Mesh);
 	
 	_Health = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
 	
@@ -61,8 +61,6 @@ void AAIPawn::BeginPlay()
 
 void AAIPawn::Shoot()
 {
-	//todo: debug this and test, remember that sight range is irrelevant shooting distance can do both :)
-
 	//sets the params for the spawned projectile
 	UWorld* const world = GetWorld();
 	if(world == nullptr || _ProjectileClass == nullptr){ return;}
@@ -71,8 +69,8 @@ void AAIPawn::Shoot()
 	FActorSpawnParameters spawnParams;
 	spawnParams.Owner = GetOwner();
 
-	//this code is taken (and tweaked) from the LineTraceWeapon that Josh? made, checks if the player is in front of the ai
-	float TraceDistance = 500.0f;
+	//this code is taken (and tweaked) from the LineTraceWeapon that Steve made, checks if the player is in front of the ai
+	float TraceDistance = 1000.0f;
 	FVector Start = _ForwardArrow->GetComponentLocation();
 	FVector ForwardVector = _ForwardArrow->GetForwardVector();
 	FVector End = Start +(ForwardVector * TraceDistance);
@@ -81,9 +79,8 @@ void AAIPawn::Shoot()
 		
 	FHitResult HitResult;
 	FCollisionQueryParams QueryParams;
-	QueryParams.AddIgnoredActor(this);
-
-	//if(world->LineTraceSingleByChannel(HitResult, ForwardVector, End, ECC_Visibility, QueryParams))
+	QueryParams.AddIgnoredActor(this);	
+	
 	if(UKismetSystemLibrary::LineTraceSingle(world,Start,End,UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2),
 		false,ActorsToIgnore,EDrawDebugTrace::ForDuration,HitResult,true, FLinearColor::Red,
 		FLinearColor::Green, 5))
@@ -91,8 +88,9 @@ void AAIPawn::Shoot()
 		
 		//UE_LOG(LogTemp,Warning, TEXT("shoot %s "), *HitResult.GetActor()->GetName());
 		
+		//if player is infront then shoots
 		if(UKismetSystemLibrary::DoesImplementInterface(HitResult.GetActor(),USlowable::StaticClass()))
-		{
+		{				
 			world->SpawnActor(_ProjectileClass, &_ForwardArrow->GetComponentTransform(), spawnParams);
 		}				
 	}
@@ -118,23 +116,45 @@ void AAIPawn::ShootingOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other
 		//v  checks to see if what was overlapped was the player or now via player only interface :)
 		if(UKismetSystemLibrary::DoesImplementInterface(Other,USlowable::StaticClass()))
 		{
-			UWorld* const world = GetWorld();
+			UWorld* const world = GetWorld();			
+			
+			FRotator alignMesh = Other->GetActorRotation();
+			alignMesh.Yaw += 90.0f; //mesh doesn't naturally face forward this changes it :)
+			
+			FTimerDelegate RotationDelegate = FTimerDelegate::CreateUObject(this, &AAIPawn::ControlRotation,alignMesh);
+			
+			//v is basically a tick to update mesh rotation
+			world->GetTimerManager().SetTimer(RotatePawn,RotationDelegate,0,true);
 			world->GetTimerManager().SetTimer(ShootTimer,this, &AAIPawn::Shoot,_ShootDelay,true);
-			//do a line trace to see if anything is blocking ais view of player, if not start shoot timer			
+						
 		}
 	}
 }
 
-void AAIPawn::Handle_HealthDamaged(float current, float max, float change)
+void AAIPawn::EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	UE_LOG(LogTemp,Display,TEXT("dmg"));
-
+	UWorld* const world = GetWorld();
+	world->GetTimerManager().ClearTimer(RotatePawn);
 }
 
-void AAIPawn::Handle_HealthDead(AController* causer)
+
+void AAIPawn::ControlRotation(FRotator PlayerRotation)
+{
+	//this barely works :( its rotation is being reset through the controller and that needs to be kept for wall climbing
+	FHitResult outHit;
+	_Mesh->SetWorldRotation(PlayerRotation,true, &outHit, ETeleportType::None);
+}
+
+void AAIPawn::Handle_HealthDead_Implementation(AController* causer)
+{
+	
+}
+
+void AAIPawn::Handle_HealthDamaged_Implementation(float current, float max, float change)
 {
 	OnPawnDead.Broadcast();
-	Destroy();
+	UE_LOG(LogTemp, Warning, TEXT("dead c++"));	
 }
 
 
