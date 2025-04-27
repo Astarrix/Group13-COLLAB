@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "AiSpawner.generated.h"
 
+
+
 class UArrowComponent;
 class AAIPawn;
 class UHealthComponent;
@@ -19,33 +21,64 @@ public:
 	// Sets default values for this actor's properties
 	AAiSpawner();
 
+	//scuffed as fuck way of setting up the ai pawn controller, im so sorry :')
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void SettupBug();
+
 	void SpawnBug();
+
+	//void SpawnBug_Implementation();
 
 protected:
 
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<UStaticMesh> _Mesh;
-	
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<UArrowComponent> _SpawnLocation;
+#pragma region Components
+
+	//order the components with the highest being the most likely to be adjusted by a designer for convenience.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AActor> _AiClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AAIPawn> _AiClass;
+	TObjectPtr<AAIPawn> _AIReference;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
 	TArray<AActor*> _BugArray;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float maxBugs;
- 
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	float currentBugs;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float SpawnDelay;
+	
+	FTimerHandle SpawnBugTimer;
+
+	//these are all in the side view so ordering is not as important
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<USceneComponent> _Root;
+	
+	UPROPERTY(VisibleDefaultsOnly,BlueprintReadWrite)
+	TObjectPtr<UStaticMeshComponent> _Mesh;
+	
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<UArrowComponent> _SpawnLocation;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UHealthComponent> _Health;
+
+#pragma endregion
 	
 	// Called when the game starts or when spawned
-	virtual void BeginPlay() override; 
+	virtual void BeginPlay() override;
+
+	UFUNCTION()
+	void Handle_PawnDead();
 
 	UFUNCTION()
 	void Handle_HealthDamaged(float current, float max, float change);
 	UFUNCTION()
 	void Handle_HealthDead(AController* causer);
+
+	//todo: make spawner use an interface to the ai controller :)
 };
