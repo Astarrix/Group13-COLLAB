@@ -1,6 +1,4 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
-
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
@@ -19,28 +17,38 @@ public:
 	// Sets default values for this actor's properties
 	AWeaponBase();
 
+	// Blueprint event for when the weapon fires
 	UPROPERTY(BlueprintAssignable)
 	FWeaponFireSignature OnFire;
 
+	// Functions to start and stop firing
 	UFUNCTION(BlueprintCallable)
 	void StartFire();
 	UFUNCTION(BlueprintCallable)
 	void StopFire();
 	
+	UFUNCTION(BlueprintCallable, Category="Weapon")
+	UStaticMesh* GetStaticMesh() const;
+
 protected:
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	// The root scene component
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapon")
 	TObjectPtr<USceneComponent> _Root;
 
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	// The static mesh component that holds the UStaticMesh
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapon")
 	TObjectPtr<UStaticMeshComponent> _Mesh;
 
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	// The arrow component for the muzzle
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapon")
 	TObjectPtr<UArrowComponent> _Muzzle;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	// The delay between weapon fires
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Weapon")
 	float _FireDelay;
 	FTimerHandle _FireDelayTimer;
 
+	// The function that handles the actual firing logic
 	UFUNCTION()
 	virtual void Fire();
 };
