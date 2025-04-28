@@ -6,6 +6,7 @@
 #include "AIPawn.h"
 #include "AIMech.generated.h"
 
+struct FAIStimulus;
 class UAISenseConfig_Sight;
 class UAIPerceptionComponent;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMechDeadSignature);
@@ -50,6 +51,10 @@ protected:
 	TObjectPtr<UAIPerceptionComponent> _AIPercepetion;
 	TObjectPtr<UAISenseConfig_Sight> _AISenseSight;
 
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<AActor> _PlayerRef;
+	bool canSeePlayer = false;
+
 #pragma endregion Components
 	
 	virtual void BeginPlay() override;
@@ -62,6 +67,9 @@ protected:
 	UFUNCTION()
 	void EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	UFUNCTION()
+	void Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus);	
+	
 	//health 
 	UFUNCTION(BlueprintNativeEvent)
 	void Handle_HealthDamaged(float current, float max, float change);

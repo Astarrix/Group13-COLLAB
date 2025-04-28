@@ -23,5 +23,5 @@ public:
 	void SlowTarget(float slowPerc);
 
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
-	void EndClimbing();
+	void EndPlayerClimbing();
 };

@@ -33,6 +33,10 @@ AAIMech::AAIMech()
 
 	_AIPercepetion->ConfigureSense(*_AISenseSight);
 	_AIPercepetion->SetDominantSense(UAISenseConfig_Sight::StaticClass());
+
+	_AISenseSight->DetectionByAffiliation.bDetectEnemies = true;
+	_AISenseSight->DetectionByAffiliation.bDetectFriendlies = true;
+	_AISenseSight->DetectionByAffiliation.bDetectNeutrals = true;	
 	
 	_Health = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
 }
@@ -41,11 +45,15 @@ AAIMech::AAIMech()
 void AAIMech::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	_AIPercepetion->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &AAIMech::Handle_TargetPerceptionUpdated);
 }
 
 void AAIMech::Shoot()
 {
+	if(canSeePlayer)
+	{
+		//todo: shoot
+	}
 	
 }
 
@@ -67,7 +75,29 @@ void AAIMech::ShootingOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other
 void AAIMech::EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	
+	UWorld* const world = GetWorld();
+	world->GetTimerManager().ClearTimer(_ShootTimer);
+}
+
+void AAIMech::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus)
+{
+	switch (stimulus.Type)
+	{
+	case 0:
+		//react
+			if(stimulus.WasSuccessfullySensed() && UKismetSystemLibrary::DoesImplementInterface(Actor,USlowable::StaticClass()))
+			{				
+				_PlayerRef = Actor;
+				canSeePlayer = true;
+			}
+			else
+			{
+				canSeePlayer = false;
+			}		
+		return;
+	default:
+		return;
+	}
 }
 
 void AAIMech::Handle_HealthDamaged_Implementation(float current, float max, float change)
