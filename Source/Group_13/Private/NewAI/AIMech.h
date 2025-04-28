@@ -6,6 +6,8 @@
 #include "AIPawn.h"
 #include "AIMech.generated.h"
 
+class UAISenseConfig_Sight;
+class UAIPerceptionComponent;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMechDeadSignature);
 
 UCLASS(Abstract)
@@ -20,10 +22,15 @@ public:
 protected:
 
 #pragma region Components
+	
 	UPROPERTY(EditAnywhere, blueprintReadWrite)
 	TObjectPtr<UHealthComponent> _Health;
 
 	//projectile
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	float _ShootDelay;
+	FTimerHandle _ShootTimer;
+	
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<USceneComponent> _Root;
 
@@ -35,8 +42,29 @@ protected:
 	
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<USphereComponent> _DetectionRange;
+	
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<UArrowComponent> _ForwardArrow;
+
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<UAIPerceptionComponent> _AIPercepetion;
+	TObjectPtr<UAISenseConfig_Sight> _AISenseSight;
 
 #pragma endregion Components
 	
 	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintCallable)
+	void Shoot();
+
+	UFUNCTION()
+	void ShootingOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	UFUNCTION()
+	void EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	//health 
+	UFUNCTION(BlueprintNativeEvent)
+	void Handle_HealthDamaged(float current, float max, float change);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void Handle_HealthDead(AController* causer);
 };
