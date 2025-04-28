@@ -48,7 +48,7 @@ void ASpiderNavPoint::BeginPlay()
 }
 
 // Called every frame
-void ASpiderNavPoint::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-}
+//void ASpiderNavPoint::Tick(float DeltaTime)
+//{
+	//Super::Tick(DeltaTime);
+//}
