@@ -86,8 +86,7 @@ void AAIPawn::Shoot()
 	if(UKismetSystemLibrary::LineTraceSingle(world,Start,End,UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2),
 		false,ActorsToIgnore,EDrawDebugTrace::ForDuration,HitResult,true, FLinearColor::Red,
 		FLinearColor::Green, 5))
-	{
-		
+	{		
 		//UE_LOG(LogTemp,Warning, TEXT("shoot %s "), *HitResult.GetActor()->GetName());
 		
 		//if player is infront then shoots
@@ -118,10 +117,7 @@ void AAIPawn::ShootingOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other
 		//v  checks to see if what was overlapped was the player or now via player only interface :)
 		if(UKismetSystemLibrary::DoesImplementInterface(Other,USlowable::StaticClass()))
 		{
-			UWorld* const world = GetWorld();			
-			
-			//FRotator alignMesh = Other->GetActorRotation();
-			//alignMesh.Yaw += 90.0f; //mesh doesn't naturally face forward this changes it :)
+			UWorld* const world = GetWorld();
 			
 			FTimerDelegate RotationDelegate = FTimerDelegate::CreateUObject(this, &AAIPawn::ControlRotation,Other);
 			
@@ -145,6 +141,9 @@ void AAIPawn::ControlRotation_Implementation(AActor* Player)
 	//_Mesh->SetWorldRotation(PlayerRotation,true, &outHit, ETeleportType::None);
 
 	//_FacePlayerArrow->SetWorldRotation(Player->GetActorRotation());
+
+
+	//dont remove this function this is now done in blueprint :)
 }
 
 void AAIPawn::Handle_HealthDead_Implementation(AController* causer)

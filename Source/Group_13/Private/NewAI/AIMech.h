@@ -55,6 +55,8 @@ protected:
 	TObjectPtr<AActor> _PlayerRef;
 	bool canSeePlayer = false;
 
+	FTimerHandle RotateArrow;
+
 #pragma endregion Components
 	
 	virtual void BeginPlay() override;
@@ -67,12 +69,19 @@ protected:
 	UFUNCTION()
 	void EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	//Rotates arrow to face player, done in blueprint
+	UFUNCTION(BlueprintNativeEvent)
+	void ControlArrowRotation();
+	
 	UFUNCTION()
 	void Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus);	
 	
-	//health 
+	//health
+	
 	UFUNCTION(BlueprintNativeEvent)
 	void Handle_HealthDamaged(float current, float max, float change);
+
+	//If in blueprint add a destroy actor node :)
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void Handle_HealthDead(AController* causer);
 };

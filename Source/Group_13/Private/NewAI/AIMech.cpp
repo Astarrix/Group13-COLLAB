@@ -68,6 +68,7 @@ void AAIMech::ShootingOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other
 			UWorld* const world = GetWorld();
 
 			world->GetTimerManager().SetTimer(_ShootTimer,this,&AAIMech::Shoot,_ShootDelay,true);
+			world->GetTimerManager().SetTimer(RotateArrow,this,&AAIMech::ControlArrowRotation,0.01f,true);
 		}
 	}	
 }
@@ -77,6 +78,10 @@ void AAIMech::EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 {
 	UWorld* const world = GetWorld();
 	world->GetTimerManager().ClearTimer(_ShootTimer);
+}
+
+void AAIMech::ControlArrowRotation_Implementation()
+{
 }
 
 void AAIMech::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus)
