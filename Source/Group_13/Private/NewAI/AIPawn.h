@@ -37,10 +37,10 @@ protected:
 	TSubclassOf<AActor> _BloodSplatter;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	TSubclassOf<AAIProjectile> _ProjectileClass;
+	float DecalDelay;
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	float DecalDelay;
+	TSubclassOf<AAIProjectile> _ProjectileClass;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float _ShootDelay;

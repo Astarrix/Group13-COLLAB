@@ -132,7 +132,9 @@ void AAIPawn::EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	UWorld* const world = GetWorld();
-	world->GetTimerManager().ClearTimer(RotatePawn);
+	//world->GetTimerManager().PauseTimer()
+	world->GetTimerManager().PauseTimer(RotatePawn);
+	//world->GetTimerManager().PauseTimer(ShootTimer);
 }
 
 void AAIPawn::ControlRotation_Implementation(AActor* Player)

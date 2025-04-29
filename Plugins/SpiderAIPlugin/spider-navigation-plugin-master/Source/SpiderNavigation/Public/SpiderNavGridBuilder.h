@@ -173,7 +173,7 @@ protected:
 
 public:	
 	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	//virtual void Tick(float DeltaTime) override;
 	
     /** Builds navigation grid. Returs number of navigations points */
 	UFUNCTION(BlueprintCallable, Category = "SpiderNavGridBuilder")

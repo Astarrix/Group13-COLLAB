@@ -3,7 +3,9 @@
 
 #include "AIMech.h"
 
+#include "AIMechProjectile.h"
 #include "Slowable.h"
+#include "Components/ArrowComponent.h"
 #include "Components/SphereComponent.h"
 #include "HealthComp/HealthComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -19,6 +21,9 @@ AAIMech::AAIMech()
 
 	_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	_Mesh->SetupAttachment(_Root);
+
+	_ForwardArrow= CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow"));
+	_ForwardArrow->SetupAttachment(_Root);
 
 	_WeakPoint = CreateDefaultSubobject<USphereComponent>(TEXT("WeakPoint"));
 	_WeakPoint->SetupAttachment(_Mesh);
@@ -52,7 +57,42 @@ void AAIMech::Shoot()
 {
 	if(canSeePlayer)
 	{
+		UWorld* const world = GetWorld();
 		//todo: shoot
+		FActorSpawnParameters spawnParams;
+		spawnParams.Owner = GetOwner();
+		
+		UE_LOG(LogTemp,Display,TEXT("can see and is shooting"));
+		float TraceDistance = _DetectionRange->GetScaledSphereRadius();
+		FVector start = _ForwardArrow->GetComponentLocation();
+		FVector forwardVector = _ForwardArrow->GetForwardVector();
+		FVector end = start+(forwardVector * TraceDistance);
+		TArray<AActor*> actorsToIgnore;
+		//actorsToIgnore.Add(this); //if confused by code it is explained in ai pawn
+
+		FHitResult hitResult;
+		FCollisionQueryParams QueryParams;
+		QueryParams.AddIgnoredActor(this);
+
+		if(UKismetSystemLibrary::LineTraceSingle(world,start,end,UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2),
+		false,actorsToIgnore,EDrawDebugTrace::ForDuration,hitResult,true, FLinearColor::Red,
+		FLinearColor::Green, 5))
+		{
+			if(UKismetSystemLibrary::DoesImplementInterface(hitResult.GetActor(), USlowable::StaticClass()))
+			{
+				UE_LOG(LogTemp,Display,TEXT("shooting player"))
+				world->SpawnActor(_Projectile,&_ForwardArrow->GetComponentTransform(),spawnParams);
+			}
+			else
+			{
+				UE_LOG(LogTemp,Display,TEXT("not player"))
+			}
+
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp,Display,TEXT("cant see "));
 	}
 	
 }
@@ -77,7 +117,8 @@ void AAIMech::EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	UWorld* const world = GetWorld();
-	world->GetTimerManager().ClearTimer(_ShootTimer);
+	//world->GetTimerManager().ClearTimer(_ShootTimer);
+	world->GetTimerManager().ClearTimer(RotateArrow);	
 }
 
 void AAIMech::ControlArrowRotation_Implementation()
@@ -91,12 +132,15 @@ void AAIMech::Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus
 	case 0:
 		//react
 			if(stimulus.WasSuccessfullySensed() && UKismetSystemLibrary::DoesImplementInterface(Actor,USlowable::StaticClass()))
-			{				
+			{
+				UE_LOG(LogTemp,Display,TEXT("sensed true"));
 				_PlayerRef = Actor;
 				canSeePlayer = true;
 			}
 			else
 			{
+				UE_LOG(LogTemp,Display,TEXT("sensed false"));
+
 				canSeePlayer = false;
 			}		
 		return;

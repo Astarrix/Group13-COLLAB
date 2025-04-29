@@ -6,6 +6,7 @@
 #include "AIPawn.h"
 #include "AIMech.generated.h"
 
+class AAIMechProjectile;
 struct FAIStimulus;
 class UAISenseConfig_Sight;
 class UAIPerceptionComponent;
@@ -24,10 +25,12 @@ protected:
 
 #pragma region Components
 	
-	UPROPERTY(EditAnywhere, blueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UHealthComponent> _Health;
+	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TSubclassOf<AAIMechProjectile> _Projectile;
 
-	//projectile
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float _ShootDelay;
 	FTimerHandle _ShootTimer;
