@@ -4,22 +4,26 @@
 
 #include "CoreMinimal.h"
 #include "AIPawn.h"
+#include "GenericTeamAgentInterface.h"
 #include "AIMech.generated.h"
 
 class AAIMechProjectile;
 struct FAIStimulus;
 class UAISenseConfig_Sight;
 class UAIPerceptionComponent;
+//DECLARE_DYNAMIC_MULTICAST_DELEGATE_()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMechDeadSignature);
 
 UCLASS(Abstract)
-class GROUP_13_API AAIMech : public APawn
+class GROUP_13_API AAIMech : public APawn, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this pawn's properties
 	AAIMech();
+
+	virtual ETeamAttitude::Type GetTeamAttitudeTowards(const AActor& Other);
 
 protected:
 
@@ -32,8 +36,14 @@ protected:
 	TSubclassOf<AAIMechProjectile> _Projectile;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	float _weakPointDmg;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float _ShootDelay;
 	FTimerHandle _ShootTimer;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	float _TeamId;
 	
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<USceneComponent> _Root;
@@ -72,6 +82,9 @@ protected:
 	UFUNCTION()
 	void EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	UFUNCTION()
+	void WeakPointOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	
 	//Rotates arrow to face player, done in blueprint
 	UFUNCTION(BlueprintNativeEvent)
 	void ControlArrowRotation();
