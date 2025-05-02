@@ -6,7 +6,9 @@
 #include "Components/ActorComponent.h"
 #include "HealthComponent.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FHealthDamagedSignature, float, newHealth, float, maxHealth, float, change);
+class AAIMech;
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FHealthDamagedSignature, float, newHealth, float, maxHealth, float,
+                                               change);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FHealthDeadSignature, AController*, causer);
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
@@ -17,16 +19,24 @@ class GROUP_13_API UHealthComponent : public UActorComponent
 public:	
 	UHealthComponent();
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TSubclassOf<AAIMech> _MechRef;
+
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	float _CurrentHealth;
+	
 	UPROPERTY(BlueprintAssignable)
 	FHealthDamagedSignature OnDamaged;
 	UPROPERTY(BlueprintAssignable)
 	FHealthDeadSignature OnDead;
 
+	UFUNCTION()
+	void CritDmg(AActor* DamagedActor, float Damage, float damageMultiplier , const class UDamageType* DamageType, class AController* instigator, AActor* DamageCauser);
+
 protected:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float _MaxHealth;
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
-	float _CurrentHealth;
+	
 
 	virtual void BeginPlay() override;
 

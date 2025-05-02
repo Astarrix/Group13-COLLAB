@@ -21,4 +21,7 @@ class GROUP_13_API ISlowable
 public:
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
 	void SlowTarget(float slowPerc);
+
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	void EndPlayerClimbing();
 };

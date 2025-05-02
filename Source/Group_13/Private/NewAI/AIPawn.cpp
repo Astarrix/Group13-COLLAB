@@ -38,6 +38,9 @@ AAIPawn::AAIPawn()
 
 	_ForwardArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Faces Forward, Don't Rotate"));
 	_ForwardArrow->SetupAttachment(_Mesh);
+
+	_FacePlayerArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Rotates Towards Player In Play"));
+	_FacePlayerArrow->SetupAttachment(_Root);
 	
 	_Health = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
 	
@@ -65,14 +68,13 @@ void AAIPawn::Shoot()
 	UWorld* const world = GetWorld();
 	if(world == nullptr || _ProjectileClass == nullptr){ return;}
 
-
 	FActorSpawnParameters spawnParams;
 	spawnParams.Owner = GetOwner();
 
 	//this code is taken (and tweaked) from the LineTraceWeapon that Steve made, checks if the player is in front of the ai
-	float TraceDistance = 1000.0f;
-	FVector Start = _ForwardArrow->GetComponentLocation();
-	FVector ForwardVector = _ForwardArrow->GetForwardVector();
+	float TraceDistance = _ShootingDistance->GetScaledSphereRadius(); //1000.00f
+	FVector Start = _FacePlayerArrow->GetComponentLocation(); //_ForwardArrow
+	FVector ForwardVector = _FacePlayerArrow->GetForwardVector();
 	FVector End = Start +(ForwardVector * TraceDistance);
 	TArray<AActor*> ActorsToIgnore;
 	ActorsToIgnore.Add( this); // adds self because setting the trace to ignore itself does nothing apparently
@@ -84,14 +86,13 @@ void AAIPawn::Shoot()
 	if(UKismetSystemLibrary::LineTraceSingle(world,Start,End,UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2),
 		false,ActorsToIgnore,EDrawDebugTrace::ForDuration,HitResult,true, FLinearColor::Red,
 		FLinearColor::Green, 5))
-	{
-		
+	{		
 		//UE_LOG(LogTemp,Warning, TEXT("shoot %s "), *HitResult.GetActor()->GetName());
 		
 		//if player is infront then shoots
 		if(UKismetSystemLibrary::DoesImplementInterface(HitResult.GetActor(),USlowable::StaticClass()))
 		{				
-			world->SpawnActor(_ProjectileClass, &_ForwardArrow->GetComponentTransform(), spawnParams);
+			world->SpawnActor(_ProjectileClass, &_FacePlayerArrow->GetComponentTransform(), spawnParams);
 		}				
 	}
 }
@@ -116,17 +117,13 @@ void AAIPawn::ShootingOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other
 		//v  checks to see if what was overlapped was the player or now via player only interface :)
 		if(UKismetSystemLibrary::DoesImplementInterface(Other,USlowable::StaticClass()))
 		{
-			UWorld* const world = GetWorld();			
+			UWorld* const world = GetWorld();
 			
-			FRotator alignMesh = Other->GetActorRotation();
-			alignMesh.Yaw += 90.0f; //mesh doesn't naturally face forward this changes it :)
-			
-			FTimerDelegate RotationDelegate = FTimerDelegate::CreateUObject(this, &AAIPawn::ControlRotation,alignMesh);
+			FTimerDelegate RotationDelegate = FTimerDelegate::CreateUObject(this, &AAIPawn::ControlRotation,Other);
 			
 			//v is basically a tick to update mesh rotation
-			world->GetTimerManager().SetTimer(RotatePawn,RotationDelegate,0,true);
-			world->GetTimerManager().SetTimer(ShootTimer,this, &AAIPawn::Shoot,_ShootDelay,true);
-						
+			world->GetTimerManager().SetTimer(RotatePawn,RotationDelegate,0.01f,true);
+			world->GetTimerManager().SetTimer(ShootTimer,this, &AAIPawn::Shoot,_ShootDelay,true);						
 		}
 	}
 }
@@ -135,15 +132,20 @@ void AAIPawn::EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	UWorld* const world = GetWorld();
-	world->GetTimerManager().ClearTimer(RotatePawn);
+	//world->GetTimerManager().PauseTimer()
+	world->GetTimerManager().PauseTimer(RotatePawn);
+	//world->GetTimerManager().PauseTimer(ShootTimer);
 }
 
+void AAIPawn::ControlRotation_Implementation(AActor* Player)
+{	//this barely works :( its rotation is being reset through the controller and that needs to be kept for wall climbing
+	//FHitResult outHit;
+	//_Mesh->SetWorldRotation(PlayerRotation,true, &outHit, ETeleportType::None);
 
-void AAIPawn::ControlRotation(FRotator PlayerRotation)
-{
-	//this barely works :( its rotation is being reset through the controller and that needs to be kept for wall climbing
-	FHitResult outHit;
-	_Mesh->SetWorldRotation(PlayerRotation,true, &outHit, ETeleportType::None);
+	//_FacePlayerArrow->SetWorldRotation(Player->GetActorRotation());
+
+
+	//dont remove this function this is now done in blueprint :)
 }
 
 void AAIPawn::Handle_HealthDead_Implementation(AController* causer)
