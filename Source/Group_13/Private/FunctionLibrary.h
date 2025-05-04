@@ -2,7 +2,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Group_13/InputModeEnum.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "FunctionLibrary.generated.h"
 
@@ -11,10 +10,8 @@ UCLASS()
 class GROUP_13_API UFunctionLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-	
 
 public:
-	
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta=(CompactNodeTitle = "<<"))
 	static int LeftBitShift(int data, int pos);
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta=(CompactNodeTitle = ">>"))
