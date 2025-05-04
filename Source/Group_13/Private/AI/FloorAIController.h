@@ -39,9 +39,7 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void OnPossess(APawn* InPawn) override;
 
-private:
-	
-	
+private:	
 	UFUNCTION()
 	void Handle_TargetPerceptionUpdated(AActor* Actor, FAIStimulus stimulus);
 

@@ -66,11 +66,11 @@ void ASpiderNavGridBuilder::BeginPlay()
 }
 
 // Called every frame
-void ASpiderNavGridBuilder::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
+//void ASpiderNavGridBuilder::Tick(float DeltaTime)
+//{
+	//Super::Tick(DeltaTime);
 
-}
+//}
 
 int32 ASpiderNavGridBuilder::BuildGrid()
 {
@@ -332,10 +332,12 @@ void ASpiderNavGridBuilder::SpawnNavPoints()
 
 	for (int32 i = 0; i < NavPointsLocations.Num(); i++) {
 		NavPoint = GetWorld()->SpawnActor<ASpiderNavPoint>(NavPointActorBP, NavPointsLocations[i], DefaultRotator, SpawnParams);
-		if (NavPoint) {
+		if (NavPoint)
+		{
 			NavPoints.Add(NavPoint);
 			FVector* Normal = NavPointsNormals.Find(i);
-			if (Normal) {
+			if (Normal)
+			{
 				NavPoint->Normal = *Normal;
 			}
 		}

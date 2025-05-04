@@ -37,10 +37,10 @@ protected:
 	TSubclassOf<AActor> _BloodSplatter;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	TSubclassOf<AAIProjectile> _ProjectileClass;
+	float DecalDelay;
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	float DecalDelay;
+	TSubclassOf<AAIProjectile> _ProjectileClass;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float _ShootDelay;
@@ -66,6 +66,9 @@ protected:
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UArrowComponent> _ForwardArrow;
+
+	UPROPERTY(BlueprintReadWrite, VisibleDefaultsOnly)
+	TObjectPtr<UArrowComponent> _FacePlayerArrow;
 	
 #pragma endregion 
 
@@ -88,10 +91,9 @@ protected:
 
 	//For rotation the mesh to always face player
 	FTimerHandle RotatePawn;
-	//float RotationTick = 1.0f;
 	
-	UFUNCTION()
-	void ControlRotation(FRotator PlayerRotation);
+	UFUNCTION(BlueprintNativeEvent)
+	void ControlRotation(AActor* Player);
 	
 	//health 
 	UFUNCTION(BlueprintNativeEvent)
