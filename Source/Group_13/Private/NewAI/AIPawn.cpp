@@ -101,11 +101,11 @@ void AAIPawn::DropDecal()
 {
 	//spawns a blueprint attached decal based on timer
 	UWorld* const world = GetWorld();
-	if(world == nullptr || _BloodSplatter == nullptr){ return;}
+	if(world == nullptr || _GoopSplatter == nullptr){ return;}
 	
 	FActorSpawnParameters spawnParams;
 	spawnParams.Owner = GetOwner();
-	world->SpawnActor(_BloodSplatter, &_DecalLocation->GetComponentTransform(), spawnParams);
+	world->SpawnActor(_GoopSplatter, &_DecalLocation->GetComponentTransform(), spawnParams);
 }
 
 void AAIPawn::ShootingOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp,
@@ -137,6 +137,21 @@ void AAIPawn::EndShootingOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 	//world->GetTimerManager().PauseTimer(ShootTimer);
 }
 
+void AAIPawn::PawnDead()
+{
+	OnPawnDead.Broadcast();
+	//UE_LOG(LogTemp, Warning, TEXT("dead c++"));
+	
+	UWorld* const world = GetWorld();
+	if(world == nullptr || _DeadGoopSplatter == nullptr){ return;}
+	
+	FActorSpawnParameters spawnParams;
+	spawnParams.Owner = GetOwner();
+	world->SpawnActor(_DeadGoopSplatter, &_DecalLocation->GetComponentTransform(), spawnParams);
+
+	Destroy();
+}
+
 void AAIPawn::ControlRotation_Implementation(AActor* Player)
 {	//this barely works :( its rotation is being reset through the controller and that needs to be kept for wall climbing
 	//FHitResult outHit;
@@ -155,8 +170,7 @@ void AAIPawn::Handle_HealthDead_Implementation(AController* causer)
 
 void AAIPawn::Handle_HealthDamaged_Implementation(float current, float max, float change)
 {
-	OnPawnDead.Broadcast();
-	UE_LOG(LogTemp, Warning, TEXT("dead c++"));	
+	
 }
 
 
