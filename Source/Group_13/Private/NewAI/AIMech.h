@@ -58,7 +58,10 @@ protected:
 	TObjectPtr<USphereComponent> _DetectionRange;
 	
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<UArrowComponent> _ForwardArrow;
+	TObjectPtr<UArrowComponent> _LeftArrow;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<UArrowComponent> _RighttArrow;
 
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UAIPerceptionComponent> _AIPercepetion;

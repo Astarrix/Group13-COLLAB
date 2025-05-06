@@ -23,8 +23,10 @@ AAIMech::AAIMech()
 	_SkelMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
 	_SkelMesh->SetupAttachment(_Root);
 
-	_ForwardArrow= CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow"));
-	_ForwardArrow->SetupAttachment(_Root);
+	_LeftArrow= CreateDefaultSubobject<UArrowComponent>(TEXT("LeftArrow"));
+	_LeftArrow->SetupAttachment(_Root);
+	_RighttArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("RightArrow"));
+	_RighttArrow->SetupAttachment(_Root);
 
 	_WeakPoint = CreateDefaultSubobject<USphereComponent>(TEXT("WeakPoint"));
 	_WeakPoint->SetupAttachment(_SkelMesh);
@@ -88,8 +90,8 @@ void AAIMech::Shoot()
 		
 		UE_LOG(LogTemp,Display,TEXT("can see and is shooting"));
 		float TraceDistance = _DetectionRange->GetScaledSphereRadius();
-		FVector start = _ForwardArrow->GetComponentLocation();
-		FVector forwardVector = _ForwardArrow->GetForwardVector();
+		FVector start = _LeftArrow->GetComponentLocation();
+		FVector forwardVector = _LeftArrow->GetForwardVector();
 		FVector end = start+(forwardVector * TraceDistance);
 		TArray<AActor*> actorsToIgnore;
 		actorsToIgnore.Add(this); //if confused by code it is explained in ai pawn
@@ -106,7 +108,8 @@ void AAIMech::Shoot()
 			if(UKismetSystemLibrary::DoesImplementInterface(hitResult.GetActor(),USlowable::StaticClass()))
 			{
 				UE_LOG(LogTemp,Display,TEXT("shooting player"))
-				world->SpawnActor(_Projectile,&_ForwardArrow->GetComponentTransform(),spawnParams);
+				world->SpawnActor(_Projectile,&_LeftArrow->GetComponentTransform(),spawnParams);
+				world->SpawnActor(_Projectile,&_RighttArrow->GetComponentTransform(),spawnParams);
 				world->GetTimerManager().SetTimer(RotateArrow,this,&AAIMech::ControlArrowRotation,0.01f,true);
 			}
 			else

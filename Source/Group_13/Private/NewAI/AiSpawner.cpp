@@ -43,6 +43,7 @@ void AAiSpawner::SpawnBug()
 		if(_AIReference != nullptr)
 		{
 			_AIReference->OnPawnDead.AddUniqueDynamic(this, &AAiSpawner::Handle_PawnDead);
+			world->GetTimerManager().ClearTimer(SpawnBugTimer);
 			
 		}
 		currentBugs++;
@@ -63,14 +64,15 @@ void AAiSpawner::BeginPlay()
 	_Health->OnDamaged.AddUniqueDynamic(this,&AAiSpawner::Handle_HealthDamaged);
 	_Health->OnDead.AddUniqueDynamic(this, &AAiSpawner::Handle_HealthDead);	
 
-	UE_LOG(LogTemp,Display,TEXT("begin timer"));
+	//UE_LOG(LogTemp,Display,TEXT("begin timer"));
 	GetWorld()->GetTimerManager().SetTimer(SpawnBugTimer,this,&AAiSpawner::SpawnBug,SpawnDelay, true);	
 }
 
 void AAiSpawner::Handle_PawnDead()
 {
 	currentBugs--;
-	UE_LOG(LogTemp,Display,TEXT(" bug dead"));	
+	GetWorld()->GetTimerManager().SetTimer(SpawnBugTimer,this,&AAiSpawner::SpawnBug,SpawnDelay, true);	
+	//UE_LOG(LogTemp,Display,TEXT(" bug dead"));	
 }
 
 void AAiSpawner::Handle_HealthDamaged(float current, float max, float change)
