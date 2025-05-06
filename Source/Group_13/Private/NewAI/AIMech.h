@@ -49,7 +49,7 @@ protected:
 	TObjectPtr<USceneComponent> _Root;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<UStaticMeshComponent> _Mesh;
+	TObjectPtr<USkeletalMeshComponent> _SkelMesh;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<USphereComponent> _WeakPoint;

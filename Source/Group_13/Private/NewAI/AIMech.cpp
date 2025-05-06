@@ -20,14 +20,14 @@ AAIMech::AAIMech()
 	_Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = _Root;
 
-	_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-	_Mesh->SetupAttachment(_Root);
+	_SkelMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
+	_SkelMesh->SetupAttachment(_Root);
 
 	_ForwardArrow= CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow"));
 	_ForwardArrow->SetupAttachment(_Root);
 
 	_WeakPoint = CreateDefaultSubobject<USphereComponent>(TEXT("WeakPoint"));
-	_WeakPoint->SetupAttachment(_Mesh);
+	_WeakPoint->SetupAttachment(_SkelMesh);
 	_WeakPoint->OnComponentBeginOverlap.AddUniqueDynamic(this,&AAIMech::WeakPointOverlap);
 
 	_DetectionRange = CreateDefaultSubobject<USphereComponent>(TEXT("DetectionRange"));
