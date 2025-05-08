@@ -34,7 +34,10 @@ protected:
 	TObjectPtr<UHealthComponent> _Health;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AActor> _BloodSplatter;
+	TSubclassOf<AActor> _GoopSplatter;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TSubclassOf<AActor> _DeadGoopSplatter;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float DecalDelay;
@@ -100,4 +103,7 @@ protected:
 	void Handle_HealthDamaged(float current, float max, float change);
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void Handle_HealthDead(AController* causer);
+
+	UFUNCTION(BlueprintCallable)
+	void PawnDead();
 };

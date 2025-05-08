@@ -49,7 +49,7 @@ protected:
 	TObjectPtr<USceneComponent> _Root;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<UStaticMeshComponent> _Mesh;
+	TObjectPtr<USkeletalMeshComponent> _SkelMesh;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<USphereComponent> _WeakPoint;
@@ -58,7 +58,10 @@ protected:
 	TObjectPtr<USphereComponent> _DetectionRange;
 	
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<UArrowComponent> _ForwardArrow;
+	TObjectPtr<UArrowComponent> _LeftArrow;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<UArrowComponent> _RighttArrow;
 
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UAIPerceptionComponent> _AIPercepetion;
