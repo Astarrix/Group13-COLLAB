@@ -6,7 +6,7 @@
 
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
-{	
+{
 }
 
 void UHealthComponent::CritDmg(AActor* DamagedActor, float Damage, float damageMultiplier,
@@ -37,6 +37,3 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 		OnDead.Broadcast(Instigator);
 	}
 }
-
-
-
