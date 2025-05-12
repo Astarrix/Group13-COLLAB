@@ -4,7 +4,9 @@
 #include "AiSpawner.h"
 
 #include "AIPawn.h"
+#include "Slowable.h"
 #include "Components/ArrowComponent.h"
+#include "Components/SphereComponent.h"
 #include "HealthComp/HealthComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -21,6 +23,10 @@ AAiSpawner::AAiSpawner()
 
 	_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Spawner Mesh"));
 	_Mesh->SetupAttachment(RootComponent);
+
+	_TriggerStartSpawner = CreateDefaultSubobject<USphereComponent>(TEXT("Trigger"));
+	_TriggerStartSpawner->SetupAttachment(RootComponent);
+	_TriggerStartSpawner->OnComponentBeginOverlap.AddUniqueDynamic(this, &AAiSpawner::TriggerStartOverlap);
 
 	_SpawnLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("Spawn Lcoation"));
 	_SpawnLocation->SetupAttachment(RootComponent);
@@ -65,7 +71,22 @@ void AAiSpawner::BeginPlay()
 	_Health->OnDead.AddUniqueDynamic(this, &AAiSpawner::Handle_HealthDead);	
 
 	//UE_LOG(LogTemp,Display,TEXT("begin timer"));
-	GetWorld()->GetTimerManager().SetTimer(SpawnBugTimer,this,&AAiSpawner::SpawnBug,SpawnDelay, true);	
+	//GetWorld()->GetTimerManager().SetTimer(SpawnBugTimer,this,&AAiSpawner::SpawnBug,SpawnDelay, true);	
+}
+
+void AAiSpawner::TriggerStartOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp,
+	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if(Other != nullptr && Other != this && OtherComp != nullptr)
+	{
+		//v  checks to see if what was overlapped was the player or now via player only interface :)
+		if(UKismetSystemLibrary::DoesImplementInterface(Other,USlowable::StaticClass()))
+		{
+			UWorld* const world = GetWorld();
+
+			GetWorld()->GetTimerManager().SetTimer(SpawnBugTimer,this,&AAiSpawner::SpawnBug,SpawnDelay, true);	
+		}
+	}	
 }
 
 void AAiSpawner::Handle_PawnDead()

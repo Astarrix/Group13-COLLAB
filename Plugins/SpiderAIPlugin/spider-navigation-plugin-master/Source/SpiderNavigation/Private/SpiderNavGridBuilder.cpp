@@ -39,7 +39,7 @@ ASpiderNavGridBuilder::ASpiderNavGridBuilder()
 	VolumeBox->SetWorldScale3D(FVector(50.f, 50.f, 50.f));
 	RootComponent = VolumeBox;
 
-	GridStepSize = 350.0f;
+	GridStepSize = 450.0f;
 	bUseActorWhiteList = false;
 	bUseActorBlackList = false;
 	bAutoRemoveTracers = true;
