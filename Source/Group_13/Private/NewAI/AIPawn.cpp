@@ -84,7 +84,7 @@ void AAIPawn::Shoot()
 	QueryParams.AddIgnoredActor(this);	
 	
 	if(UKismetSystemLibrary::LineTraceSingle(world,Start,End,UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2),
-		false,ActorsToIgnore,EDrawDebugTrace::ForDuration,HitResult,true, FLinearColor::Red,
+		false,ActorsToIgnore,EDrawDebugTrace::None,HitResult,true, FLinearColor::Red,
 		FLinearColor::Green, 5))
 	{		
 		//UE_LOG(LogTemp,Warning, TEXT("shoot %s "), *HitResult.GetActor()->GetName());
