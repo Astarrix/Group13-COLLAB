@@ -7,7 +7,7 @@
 #include "AiSpawner.generated.h"
 
 
-
+class USphereComponent;
 class UArrowComponent;
 class AAIPawn;
 class UHealthComponent;
@@ -60,6 +60,9 @@ protected:
 	
 	UPROPERTY(VisibleDefaultsOnly,BlueprintReadWrite)
 	TObjectPtr<UStaticMeshComponent> _Mesh;
+
+	UPROPERTY(VisibleDefaultsOnly,BlueprintReadWrite)
+	TObjectPtr<USphereComponent> _TriggerStartSpawner;
 	
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UArrowComponent> _SpawnLocation;
@@ -73,6 +76,9 @@ protected:
 	virtual void BeginPlay() override;
 
 	UFUNCTION()
+	void TriggerStartOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	
+	UFUNCTION()
 	void Handle_PawnDead();
 
 	UFUNCTION()
@@ -80,5 +86,5 @@ protected:
 	UFUNCTION()
 	void Handle_HealthDead(AController* causer);
 
-	//todo: make spawner use an interface to the ai controller :)
+	//todo: make spawner use an interface to the ai controller :) ............ Why tf did i put this?
 };
