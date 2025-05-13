@@ -28,12 +28,9 @@ void UHealthComponent::BeginPlay()
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
 	AController* Instigator, AActor* DamageCauser)
 {
-	UE_LOG(LogTemp,Warning,TEXT("damage %f"), Damage);
+	//UE_LOG(LogTemp,Warning,TEXT("damage %f"), Damage);
 	const float change = FMath::Min(_CurrentHealth, Damage);
 	_CurrentHealth -= change;
 	OnDamaged.Broadcast(_CurrentHealth,_MaxHealth,change);
-	if(_CurrentHealth <= 0.0f)
-	{
-		OnDead.Broadcast(Instigator);
-	}
+	if(_CurrentHealth <= 0.0f) {OnDead.Broadcast(Instigator);}	
 }
