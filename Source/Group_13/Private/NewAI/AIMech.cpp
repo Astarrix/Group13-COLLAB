@@ -102,7 +102,7 @@ void AAIMech::Shoot()
 
 		world->GetTimerManager().ClearTimer(RotateArrow);
 		if(UKismetSystemLibrary::LineTraceSingle(world,start,end,UEngineTypes::ConvertToTraceType(ECC_GameTraceChannel2),
-		false,actorsToIgnore,EDrawDebugTrace::None,hitResult,true, FLinearColor::Red,
+		false,actorsToIgnore,EDrawDebugTrace::ForDuration,hitResult,true, FLinearColor::Red,
 		FLinearColor::Green, 5))
 		{
 			if(UKismetSystemLibrary::DoesImplementInterface(hitResult.GetActor(),USlowable::StaticClass()))
